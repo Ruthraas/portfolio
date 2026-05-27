@@ -1,6 +1,6 @@
 import type { Locale } from "@/lib/i18n/translations";
 
-type TimelineItem = {
+export type TimelineItem = {
   date: string;
   kind: "experience" | "education" | "certification";
   credentialId?: string;
