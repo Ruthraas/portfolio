@@ -14,7 +14,25 @@ type SceneObject = ReturnType<Application["getAllObjects"]>[number] & {
 export function SplineHeroScene() {
   const handleLoad = (app: Application) => {
     app.setGlobalEvents(true);
-    app.setZoom(window.innerWidth < 768 ? 0.82 : 1);
+
+    const tuneScene = () => {
+      const isMobile = window.innerWidth < 768;
+      app.setZoom(isMobile ? 0.92 : 1.16);
+
+      const cube = app.findObjectByName("Cube");
+      if (cube) {
+        const scale = isMobile ? 0.66 : 0.72;
+        cube.color = "#aeb5b8";
+        cube.scale.x = scale;
+        cube.scale.y = scale;
+        cube.scale.z = scale;
+        cube.position.x = isMobile ? -18 : -4;
+        cube.position.y = isMobile ? -16 : -10;
+        cube.position.z = 150;
+      }
+
+      app.requestRender();
+    };
 
     const cleanSceneText = () => {
       const objects = app.getAllObjects() as SceneObject[];
@@ -33,7 +51,10 @@ export function SplineHeroScene() {
     };
 
     [0, 250, 800, 1600].forEach((delay) => {
-      window.setTimeout(cleanSceneText, delay);
+      window.setTimeout(() => {
+        cleanSceneText();
+        tuneScene();
+      }, delay);
     });
   };
 
@@ -42,17 +63,9 @@ export function SplineHeroScene() {
       <Spline
         scene={SPLINE_SCENE_URL}
         onLoad={handleLoad}
-        className="absolute left-1/2 top-1/2 h-[114%] w-[116%] -translate-x-1/2 -translate-y-1/2 opacity-[0.92] grayscale-[0.08] contrast-125 brightness-[1.05] saturate-[0.92]"
+        className="absolute left-1/2 top-1/2 h-[114%] w-[116%] -translate-x-1/2 -translate-y-1/2 opacity-100 grayscale-[0.04] contrast-[1.38] brightness-[1.42] saturate-[1.08]"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 grid place-items-center"
-      >
-        <span className="select-none text-[clamp(5rem,18vw,17rem)] font-black uppercase leading-none tracking-[0.08em] text-white/[0.075]">
-          Ruhtra
-        </span>
-      </div>
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(0,0,0,0.02),rgba(0,0,0,0.38)_52%,#030303_84%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.04),rgba(0,0,0,0.12)_42%,#030303_86%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#030303] via-[#030303]/88 to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#030303] to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#030303] to-transparent" />
