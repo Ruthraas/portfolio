@@ -3,5 +3,5 @@ export const navSections = [
   { id: "timeline", key: "timeline" },
   { id: "work", key: "work" },
   { id: "stack", key: "stack" },
-  { id: "contact", key: "contact" }
+  { id: "contact", key: "contact" },
 ] as const;
