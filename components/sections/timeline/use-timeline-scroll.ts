@@ -17,13 +17,15 @@ type UseTimelineScrollOptions = {
 export function useTimelineScroll({ locale, progressRef }: UseTimelineScrollOptions) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const desktopTrigger = useRef<ScrollTrigger | null>(null);
 
   const updateCards = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
 
-    const maxScroll = Math.max(1, track.scrollWidth - track.clientWidth);
-    const progress = track.scrollLeft / maxScroll;
+    const progress =
+      desktopTrigger.current?.progress ??
+      track.scrollLeft / Math.max(1, track.scrollWidth - track.clientWidth);
     progressRef.current?.style.setProperty("transform", `scaleX(${progress})`);
 
     const trackCenter = track.getBoundingClientRect().left + track.clientWidth / 2;
@@ -43,6 +45,17 @@ export function useTimelineScroll({ locale, progressRef }: UseTimelineScrollOpti
 
   const scrollByPage = useCallback((direction: "previous" | "next") => {
     const track = trackRef.current;
+    const trigger = desktopTrigger.current;
+
+    if (trigger) {
+      const distance = window.innerHeight * 0.72;
+      window.scrollBy({
+        top: direction === "next" ? distance : -distance,
+        behavior: "smooth"
+      });
+      return;
+    }
+
     if (!track) return;
 
     track.scrollBy({
@@ -59,27 +72,37 @@ export function useTimelineScroll({ locale, progressRef }: UseTimelineScrollOpti
     const media = gsap.matchMedia();
 
     media.add("(min-width: 768px)", () => {
+      gsap.set(track, { x: 0 });
+
       const setSectionHeight = () => {
         const distance = Math.max(0, track.scrollWidth - track.clientWidth);
-        section.style.setProperty("--timeline-scroll-distance", `${distance}px`);
+        section.style.setProperty("--timeline-scroll-distance", `${distance * 1.55}px`);
       };
 
       setSectionHeight();
       updateCards();
 
       const tween = gsap.to(track, {
-        scrollLeft: () => Math.max(0, track.scrollWidth - track.clientWidth),
+        x: () => -Math.max(0, track.scrollWidth - track.clientWidth),
         ease: "none",
         scrollTrigger: {
           trigger: section,
-          start: "top top",
-          end: () => `+=${Math.max(0, track.scrollWidth - track.clientWidth)}`,
-          scrub: 0.7,
+          start: "top 12%",
+          end: () => `+=${Math.max(0, track.scrollWidth - track.clientWidth) * 1.55}`,
+          scrub: 1.65,
           invalidateOnRefresh: true,
-          onRefresh: setSectionHeight,
-          onUpdate: updateCards
+          onRefresh: (self) => {
+            desktopTrigger.current = self;
+            setSectionHeight();
+            updateCards();
+          },
+          onUpdate: (self) => {
+            desktopTrigger.current = self;
+            updateCards();
+          }
         }
       });
+      desktopTrigger.current = tween.scrollTrigger ?? null;
 
       const handleResize = () => {
         setSectionHeight();
@@ -90,13 +113,17 @@ export function useTimelineScroll({ locale, progressRef }: UseTimelineScrollOpti
 
       return () => {
         window.removeEventListener("resize", handleResize);
+        desktopTrigger.current = null;
         tween.scrollTrigger?.kill();
         tween.kill();
+        gsap.set(track, { clearProps: "x" });
       };
     });
 
     media.add("(max-width: 767px)", () => {
       section.style.setProperty("--timeline-scroll-distance", "0px");
+      desktopTrigger.current = null;
+      gsap.set(track, { clearProps: "x" });
       updateCards();
 
       const handleScroll = () => updateCards();

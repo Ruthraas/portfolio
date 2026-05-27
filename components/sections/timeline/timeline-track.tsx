@@ -23,7 +23,7 @@ export function TimelineTrack({ locale }: TimelineTrackProps) {
       ref={sectionRef}
       className="relative mt-12 md:min-h-[calc(100svh+var(--timeline-scroll-distance,0px))]"
     >
-      <div className="md:sticky md:top-0 md:flex md:min-h-[100svh] md:flex-col md:justify-center md:py-16">
+      <div className="md:sticky md:top-[8svh] md:flex md:min-h-[84svh] md:flex-col md:justify-center md:py-10">
         <div className="mb-5 flex justify-end gap-2">
           <button
             type="button"
@@ -55,7 +55,7 @@ export function TimelineTrack({ locale }: TimelineTrackProps) {
 
         <div
           ref={trackRef}
-          className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-6 pt-2 [perspective:1200px] md:pointer-events-none"
+          className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-6 pt-2 [perspective:1200px] md:w-max md:snap-none md:overflow-visible"
         >
           {timelineItems.map((item, index) => (
             <TimelineCard
