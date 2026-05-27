@@ -7,15 +7,13 @@ import { TechStackSection } from "@/components/sections/tech-stack-section";
 
 export default function Home() {
   return (
-    <main data-barba="wrapper">
-      <div data-barba="container" data-barba-namespace="home">
-        <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
-        <ExperienceSection />
-        <TechStackSection />
-        <ContactSection />
-      </div>
+    <main data-page-root>
+      <HeroSection />
+      <AboutSection />
+      <ProjectsSection />
+      <ExperienceSection />
+      <TechStackSection />
+      <ContactSection />
     </main>
   );
 }

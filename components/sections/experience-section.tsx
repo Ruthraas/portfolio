@@ -3,45 +3,60 @@
 import { useRef } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useGsapReveal } from "@/hooks/use-gsap-reveal";
-import { motionStack } from "@/lib/site-data";
+import { floatingStack } from "@/lib/site-data";
 
 export function ExperienceSection() {
   const ref = useRef<HTMLElement>(null);
   useGsapReveal(ref);
 
   return (
-    <section ref={ref} className="section-space border-b border-[var(--line)]">
-      <div className="page-shell grid gap-12 lg:grid-cols-[1fr_1.1fr]">
-        <div className="motion-reveal">
+    <section ref={ref} className="section-y border-b border-[var(--line)]">
+      <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="reveal">
           <SectionHeading
-            kicker="Motion direction"
-            title="Spline in the foreground, GSAP as the director."
-            description="This version uses Spline as the premium 3D artifact and keeps the remaining animation system more controlled, heavy and editorial."
+            kicker="Interaction"
+            title="The motion system is quiet, physical and timed."
+            description="Lenis owns scroll inertia, GSAP choreographs scroll-linked reveals, Framer Motion handles tactile UI states, and the Three.js layer reacts subtly to pointer movement."
           />
         </div>
 
-        <div className="grid gap-4">
-          {motionStack.map((item, index) => {
+        <div className="reveal relative aspect-square max-h-[560px] overflow-hidden rounded-[2rem] border border-[var(--line)] bg-black/30">
+          <div className="absolute inset-0 hairline-grid opacity-45" />
+          <div className="absolute inset-[18%] rounded-full border border-[var(--line)]" />
+          <div className="absolute inset-[32%] rounded-full border border-[var(--line)]" />
+          <div className="absolute inset-[43%] rounded-full bg-[radial-gradient(circle,var(--warm),transparent_68%)] opacity-20 blur-2xl" />
+          {floatingStack.map((item, index) => {
             const Icon = item.icon;
+            const radius = index % 2 === 0 ? 41 : 30;
+            const duration = 20 + index * 2;
 
             return (
-              <article
-                key={item.title}
-                className="motion-reveal rule-box rounded-[8px] p-6"
+              <div
+                key={item.name}
+                className="absolute left-1/2 top-1/2"
+                style={{
+                  animation: `orbit-${index} ${duration}s linear infinite`,
+                  transformOrigin: `${radius}px 0`
+                }}
               >
-                <div className="flex items-start justify-between gap-6">
-                  <div className="grid size-12 place-items-center border border-[var(--line)] bg-white/[0.035] text-[var(--acid)]">
-                    <Icon size={20} />
-                  </div>
-                  <p className="display-serif text-5xl leading-none text-white/12">
-                    0{index + 1}
-                  </p>
+                <style>{`
+                  @keyframes orbit-${index} {
+                    from { transform: rotate(${index * 54}deg) translateX(${radius}%) rotate(-${index * 54}deg); }
+                    to { transform: rotate(${360 + index * 54}deg) translateX(${radius}%) rotate(-${360 + index * 54}deg); }
+                  }
+                `}</style>
+                <div className="-translate-x-1/2 -translate-y-1/2 rounded-2xl border border-[var(--line)] bg-black/54 p-4 text-white/70 backdrop-blur-xl transition hover:text-white">
+                  <Icon size={20} />
                 </div>
-                <h3 className="mt-8 text-3xl font-black text-white">{item.title}</h3>
-                <p className="mt-4 text-base leading-8 text-white/58">{item.body}</p>
-              </article>
+              </div>
             );
           })}
+          <div className="absolute inset-0 grid place-items-center">
+            <div className="panel max-w-48 rounded-3xl p-5 text-center">
+              <p className="text-xs uppercase text-white/38">System</p>
+              <p className="mt-2 text-lg font-semibold text-white">Motion Architecture</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

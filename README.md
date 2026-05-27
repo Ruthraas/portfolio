@@ -1,10 +1,10 @@
 # Arthur Almeida | Ruhtra Portfolio
 
-Sophisticated developer portfolio built with Next.js 15, React, TypeScript, TailwindCSS, Spline, GSAP, ScrollTrigger, Lenis, Barba.js and Framer Motion.
+Ultra-minimal cinematic developer portfolio built with Next.js 15, React, TypeScript, TailwindCSS, GSAP, ScrollTrigger, Lenis, Framer Motion, React Three Fiber, Three.js and GLSL shaders.
 
 ## Direction
 
-This version is a full visual reset: darker, more editorial, more restrained and more premium. Spline owns the full-bleed 3D hero, while GSAP/ScrollTrigger handles scroll choreography and Framer Motion handles tactile interface states.
+This version removes the Spline direction and rebuilds the experience around a restrained atmospheric 3D layer. The premium feeling comes from spacing, typography, subtle lighting, smooth scroll, shader motion, depth fog and quiet interaction details.
 
 ## Featured Projects
 
@@ -18,10 +18,11 @@ This version is a full visual reset: darker, more editorial, more restrained and
 - React 19
 - TypeScript
 - TailwindCSS v4
-- Spline
+- React Three Fiber
+- Three.js
+- GLSL shaders
 - GSAP + ScrollTrigger
 - Lenis smooth scroll
-- Barba.js transition system
 - Framer Motion
 
 ## Getting Started
@@ -44,9 +45,10 @@ npm audit --omit=dev
 
 ## Structure
 
-- `app/`: App Router pages, layout, styles and contact route.
-- `components/spline/`: Spline stage integration.
-- `components/sections/`: editorial portfolio sections.
-- `components/providers/`: Lenis and Barba motion infrastructure.
+- `app/`: App Router pages, layout, global styles and contact route.
+- `components/three/`: R3F scene, cinematic lighting and postprocessing.
+- `components/sections/`: minimalist portfolio sections.
+- `components/providers/`: Lenis and page transition infrastructure.
+- `lib/shaders.ts`: reusable GLSL shader programs.
 - `lib/site-data.ts`: content and project data source of truth.
 - `public/resume/`: downloadable resume in HTML and PDF.

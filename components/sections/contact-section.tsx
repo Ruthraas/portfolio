@@ -38,17 +38,16 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" ref={ref} className="section-space pb-8">
-      <div className="page-shell">
-        <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr]">
-          <div className="motion-reveal">
+    <section id="contact" ref={ref} className="section-y pb-8">
+      <div className="container-x">
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="reveal">
             <SectionHeading
               kicker="Contact"
-              title="Build the next version with taste and structure."
-              description="Open a direct line for work, collaboration or a technical conversation. The portfolio already includes the downloadable resume."
+              title="Bring a precise system into motion."
+              description="Open a direct line for work, collaboration or a technical conversation. The form is local and ready to connect to an email provider."
             />
-
-            <div className="mt-8 flex flex-wrap gap-2">
+            <div className="mt-8 flex flex-wrap gap-3">
               {socials.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -58,9 +57,9 @@ export function ContactSection() {
                     target={social.href.startsWith("http") ? "_blank" : undefined}
                     rel={social.href.startsWith("http") ? "noreferrer" : undefined}
                     data-cursor={social.label}
-                    className="inline-flex items-center gap-2 border border-[var(--line)] bg-white/[0.035] px-4 py-2 text-xs font-bold uppercase text-white/58 transition hover:border-white/28 hover:bg-white/[0.07] hover:text-white"
+                    className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white/[0.035] px-4 py-2 text-sm text-white/58 transition hover:border-white/24 hover:bg-white/[0.065] hover:text-white"
                   >
-                    <Icon size={15} />
+                    <Icon size={16} />
                     {social.label}
                   </a>
                 );
@@ -68,13 +67,10 @@ export function ContactSection() {
             </div>
           </div>
 
-          <form
-            onSubmit={handleSubmit}
-            className="motion-reveal rule-box rounded-[8px] p-5 sm:p-7"
-          >
+          <form onSubmit={handleSubmit} className="reveal panel rounded-[2rem] p-5 sm:p-7">
             <div className="grid gap-4 sm:grid-cols-2">
-              <label className="input-shell rounded-[8px] p-4">
-                <span className="text-xs font-black uppercase text-white/34">Name</span>
+              <label className="input-shell rounded-2xl p-4">
+                <span className="text-xs uppercase text-white/34">Name</span>
                 <input
                   name="name"
                   required
@@ -82,8 +78,8 @@ export function ContactSection() {
                   placeholder="Your name"
                 />
               </label>
-              <label className="input-shell rounded-[8px] p-4">
-                <span className="text-xs font-black uppercase text-white/34">Email</span>
+              <label className="input-shell rounded-2xl p-4">
+                <span className="text-xs uppercase text-white/34">Email</span>
                 <input
                   name="email"
                   type="email"
@@ -93,8 +89,9 @@ export function ContactSection() {
                 />
               </label>
             </div>
-            <label className="input-shell mt-4 block rounded-[8px] p-4">
-              <span className="text-xs font-black uppercase text-white/34">Message</span>
+
+            <label className="input-shell mt-4 block rounded-2xl p-4">
+              <span className="text-xs uppercase text-white/34">Message</span>
               <textarea
                 name="message"
                 required
@@ -107,7 +104,7 @@ export function ContactSection() {
             <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <p className="min-h-6 text-sm text-white/48">
                 {status === "sent"
-                  ? "Message received."
+                  ? "Message received. I will answer soon."
                   : status === "error"
                     ? "Check the fields and try again."
                     : `Direct line: ${profile.email}`}
@@ -122,7 +119,7 @@ export function ContactSection() {
 
         <footer className="mt-20 flex flex-col gap-4 border-t border-[var(--line)] py-8 text-sm text-white/38 sm:flex-row sm:items-center sm:justify-between">
           <p>Arthur Almeida | Ruhtra</p>
-          <p>Full-Stack Developer | Embedded Systems | React & Node.js</p>
+          <p>{profile.title}</p>
         </footer>
       </div>
     </section>

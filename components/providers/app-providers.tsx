@@ -1,13 +1,13 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { BarbaTransitionProvider } from "@/components/providers/barba-transition-provider";
 import { LenisProvider } from "@/components/providers/lenis-provider";
+import { PageTransitionProvider } from "@/components/providers/page-transition-provider";
 
 export function AppProviders({ children }: { children: ReactNode }) {
   return (
     <LenisProvider>
-      <BarbaTransitionProvider>{children}</BarbaTransitionProvider>
+      <PageTransitionProvider>{children}</PageTransitionProvider>
     </LenisProvider>
   );
 }

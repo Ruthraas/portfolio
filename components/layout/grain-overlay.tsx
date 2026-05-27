@@ -11,7 +11,7 @@ export function GrainOverlay() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-40 bg-[linear-gradient(90deg,rgba(255,107,95,0.035),transparent_22%,transparent_78%,rgba(141,215,255,0.035)),radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.22)_78%,rgba(0,0,0,0.7)_100%)]"
+        className="pointer-events-none fixed inset-0 z-40 bg-[linear-gradient(90deg,rgba(216,201,165,0.035),transparent_24%,transparent_78%,rgba(159,183,196,0.032)),radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.22)_78%,rgba(0,0,0,0.72)_100%)]"
       />
     </>
   );

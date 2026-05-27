@@ -21,7 +21,7 @@ export function useGsapReveal<T extends HTMLElement>(
 
     const ctx = gsap.context(() => {
       const targets = gsap.utils.toArray<HTMLElement>(
-        options.selector ?? ".motion-reveal, [data-reveal]"
+        options.selector ?? ".reveal, [data-reveal]"
       );
 
       targets.forEach((target, index) => {

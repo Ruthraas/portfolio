@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 type SharedProps = {
   children: ReactNode;
   className?: string;
-  variant?: "primary" | "outline";
+  variant?: "primary" | "ghost";
 };
 
 type MagneticButtonProps =
@@ -25,11 +25,10 @@ export function MagneticButton({
   function applyMagnet(event: React.MouseEvent<HTMLElement>) {
     const element = ref.current;
     if (!element) return;
-
     const rect = element.getBoundingClientRect();
     const x = event.clientX - rect.left - rect.width / 2;
     const y = event.clientY - rect.top - rect.height / 2;
-    element.style.transform = `translate3d(${x * 0.14}px, ${y * 0.14}px, 0)`;
+    element.style.transform = `translate3d(${x * 0.13}px, ${y * 0.13}px, 0)`;
   }
 
   function resetMagnet() {
@@ -37,11 +36,11 @@ export function MagneticButton({
   }
 
   const classes = cn(
-    "gpu-layer inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] px-5 text-sm font-bold uppercase transition duration-300",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--acid)]",
+    "gpu-layer inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition duration-300",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--warm)]",
     variant === "primary"
-      ? "border border-[var(--acid)] bg-[var(--acid)] text-[#050505] shadow-[0_20px_70px_rgba(216,243,106,0.16)] hover:bg-[var(--foreground)]"
-      : "border border-[var(--line)] bg-white/[0.035] text-white/75 hover:border-white/28 hover:bg-white/[0.07] hover:text-white",
+      ? "bg-[var(--fg)] text-black shadow-[0_20px_80px_rgba(244,241,234,0.16)] hover:bg-[var(--warm)]"
+      : "border border-[var(--line)] bg-white/[0.035] text-white/70 hover:border-white/24 hover:bg-white/[0.065] hover:text-white",
     className
   );
 

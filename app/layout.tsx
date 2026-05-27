@@ -7,15 +7,15 @@ import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
-  title: "Arthur Almeida | Ruhtra - Sophisticated Developer Portfolio",
+  title: "Arthur Almeida | Ruhtra - Creative Developer",
   description:
-    "Sophisticated developer portfolio for Arthur Almeida, a full-stack developer focused on React, Node.js, embedded systems, APIs, dashboards, Spline interaction and premium interface direction.",
+    "Minimal cinematic developer portfolio for Arthur Almeida, a full-stack developer focused on React, Node.js, embedded systems, APIs, dashboards, motion and immersive interfaces.",
   authors: [{ name: "Arthur Almeida" }],
   metadataBase: new URL("https://github.com/Ruthraas"),
   openGraph: {
     title: "Arthur Almeida | Ruhtra",
     description:
-      "Full-Stack Developer | Embedded Systems | React & Node.js | Spline Motion Portfolio",
+      "Creative Developer | Full-Stack Developer | Embedded Systems | React & Node.js",
     type: "website",
     url: "https://github.com/Ruthraas"
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Arthur Almeida | Ruhtra",
     description:
-      "Full-Stack Developer | Embedded Systems | React & Node.js | Spline Motion Portfolio"
+      "Creative Developer | Full-Stack Developer | Embedded Systems | React & Node.js"
   }
 };
 

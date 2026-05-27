@@ -30,7 +30,7 @@ export function ScrollProgress() {
 
   return (
     <div
-      className="fixed left-0 top-0 z-[70] h-px w-full origin-left scale-x-0 bg-[linear-gradient(90deg,var(--red),var(--brass),var(--acid),var(--blue))]"
+      className="fixed left-0 top-0 z-[70] h-px w-full origin-left scale-x-0 bg-[linear-gradient(90deg,var(--warm),var(--mist),var(--fg))]"
       ref={ref}
     />
   );
