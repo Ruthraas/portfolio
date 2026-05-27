@@ -1,6 +1,5 @@
 "use client";
 
-import i18next from "i18next";
 import {
   createContext,
   useContext,
@@ -9,25 +8,12 @@ import {
   useState,
   type ReactNode
 } from "react";
-import { I18nextProvider, initReactI18next } from "react-i18next";
 import {
   locales,
   translations,
   type Locale,
   type TranslationTree
 } from "@/lib/i18n/translations";
-
-const i18n = i18next.createInstance();
-
-void i18n.use(initReactI18next).init({
-  resources: {
-    pt: { translation: translations.pt },
-    en: { translation: translations.en }
-  },
-  lng: "pt",
-  fallbackLng: "pt",
-  interpolation: { escapeValue: false }
-});
 
 type I18nContextValue = {
   locale: Locale;
@@ -44,7 +30,6 @@ export function PortfolioI18nProvider({ children }: { children: ReactNode }) {
     const stored = window.localStorage.getItem("portfolio-locale") as Locale | null;
     if (stored && locales.includes(stored)) {
       setLocaleState(stored);
-      void i18n.changeLanguage(stored);
       return;
     }
   }, []);
@@ -56,7 +41,6 @@ export function PortfolioI18nProvider({ children }: { children: ReactNode }) {
   function setLocale(nextLocale: Locale) {
     setLocaleState(nextLocale);
     window.localStorage.setItem("portfolio-locale", nextLocale);
-    void i18n.changeLanguage(nextLocale);
   }
 
   const value = useMemo<I18nContextValue>(
@@ -68,11 +52,7 @@ export function PortfolioI18nProvider({ children }: { children: ReactNode }) {
     [locale]
   );
 
-  return (
-    <I18nextProvider i18n={i18n}>
-      <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
-    </I18nextProvider>
-  );
+  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
 
 export function usePortfolioI18n() {
