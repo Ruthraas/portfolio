@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { AppProviders } from "@/components/providers/app-providers";
-import { CustomCursor } from "@/components/layout/custom-cursor";
 import { GrainOverlay } from "@/components/layout/grain-overlay";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { Sidebar } from "@/components/layout/sidebar";
@@ -47,7 +46,6 @@ export default function RootLayout({
           <ScrollProgress />
           <Sidebar />
           {children}
-          <CustomCursor />
         </AppProviders>
       </body>
     </html>

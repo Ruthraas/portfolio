@@ -60,17 +60,6 @@ textarea {
   overflow: hidden;
 }
 
-@media (pointer: fine) {
-  body,
-  a,
-  button,
-  input,
-  textarea,
-  [data-cursor] {
-    cursor: none;
-  }
-}
-
 @layer components {
   .content-shell {
     width: min(1120px, calc(100vw - 2rem));

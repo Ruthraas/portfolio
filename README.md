@@ -1,10 +1,10 @@
 # Arthur Almeida | Ruhtra Portfolio
 
-Minimal cinematic developer portfolio built with Next.js 15, React, TypeScript, TailwindCSS, GSAP, Lenis, Framer Motion, React Three Fiber, Three.js and i18next.
+Minimal cinematic developer portfolio built with Next.js 15, React, TypeScript, TailwindCSS, GSAP, Lenis, Framer Motion, Spline, React Three Fiber, Three.js and i18next.
 
 ## Direction
 
-This version is a calm spatial portfolio: black background, tiny star layers, restrained typography, fixed sidebar navigation, PT/EN language switching and subtle scroll depth. It avoids cyberpunk visuals, neon, heavy blur and noisy motion.
+This version is a calm spatial portfolio: black background, Spline-powered hero atmosphere, restrained typography, fixed sidebar navigation, PT/EN language switching and subtle scroll depth. It avoids cyberpunk visuals, neon, heavy blur, custom cursor gimmicks and noisy motion.
 
 ## Featured Projects
 
@@ -18,6 +18,7 @@ This version is a calm spatial portfolio: black background, tiny star layers, re
 - React 19
 - TypeScript
 - TailwindCSS v4
+- Spline hero scene
 - React Three Fiber + Three.js
 - GSAP + ScrollTrigger
 - Lenis smooth scroll
@@ -45,8 +46,9 @@ npm audit --omit=dev
 ## Structure
 
 - `app/`: App Router pages, layout, global styles and contact route.
-- `components/three/`: spatial particle background.
-- `components/layout/`: sidebar, cursor, grain and scroll progress.
+- `components/spline/`: Spline hero scene wrapper.
+- `components/three/`: spatial particle background utilities.
+- `components/layout/`: sidebar, grain and scroll progress.
 - `components/providers/`: i18n, Lenis and intro transition infrastructure.
 - `lib/i18n/`: PT/EN translation resources.
 - `lib/site-data.ts`: static links, project metadata and stack data.

@@ -1,19 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { usePortfolioI18n } from "@/components/providers/i18n-provider";
+import { SplineHeroScene } from "@/components/spline/spline-hero-scene";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { profile } from "@/lib/site-data";
-
-const SpaceScene = dynamic(
-  () => import("@/components/three/space-scene").then((mod) => mod.SpaceScene),
-  {
-    ssr: false,
-    loading: () => <div className="absolute inset-0 bg-[#030303]" />
-  }
-);
 
 export function HeroSection() {
   const { content, locale } = usePortfolioI18n();
@@ -24,9 +16,8 @@ export function HeroSection() {
       className="relative min-h-[100svh] overflow-hidden"
       aria-label="Hero"
     >
-      <SpaceScene />
+      <SplineHeroScene />
       <div className="soft-grid pointer-events-none absolute inset-0 opacity-25" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#030303] to-transparent" />
 
       <div className="page-offset relative z-10 flex min-h-[100svh] items-center px-4 py-24 lg:px-0">
         <div className="content-shell">
@@ -37,18 +28,18 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="mx-auto max-w-4xl text-center"
+              className="mx-auto max-w-5xl text-center"
             >
               <p className="text-xs uppercase tracking-[0.32em] text-white/36">
-                {content.hero.location}
+                {content.hero.eyebrow}
               </p>
-              <h1 className="mt-10 text-[clamp(4.4rem,16vw,12rem)] font-medium leading-[0.82] tracking-[0.04em] text-[var(--fg)]">
+              <h1 className="mt-8 text-[clamp(4.8rem,16vw,13rem)] font-black uppercase leading-[0.78] tracking-[0.02em] text-[var(--fg)]">
                 {content.hero.name}
               </h1>
-              <p className="mt-8 text-xl font-normal text-white/78 md:text-2xl">
+              <p className="mt-7 text-xl font-normal text-white/80 md:text-2xl">
                 {content.hero.role}
               </p>
-              <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-[var(--muted)] md:text-lg">
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[var(--muted)] md:text-lg">
                 {content.hero.line}
               </p>
 

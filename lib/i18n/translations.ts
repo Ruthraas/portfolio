@@ -16,86 +16,87 @@ export const translations = {
       language: "Idioma"
     },
     hero: {
-      name: "ARTHUR",
+      eyebrow: "Arthur Almeida | São Paulo, Brasil",
+      name: "RUHTRA",
       role: "Creative Developer",
-      line: "Construindo experiencias digitais imersivas.",
-      location: "Sao Paulo, Brasil",
+      line: "Desenvolvendo interfaces, APIs e experiências digitais com React, Next.js, TypeScript e Node.js.",
+      location: "São Paulo, Brasil",
       scroll: "Role",
       cta: "Ver projetos",
-      resume: "Curriculo",
+      resume: "Currículo",
       github: "GitHub"
     },
     about: {
       kicker: "Sobre",
-      title: "Interfaces silenciosas com sistemas bem pensados por tras.",
+      title: "Desenvolvedor full-stack com olhar forte para interface, produto e sistemas.",
       lead:
-        "Sou Arthur Almeida, tambem Ruhtra. Desenvolvo interfaces modernas, APIs, dashboards, sistemas de suporte e automacoes com React, Next.js, TypeScript e Node.js.",
+        "Sou Arthur Pedroso de Almeida, também conhecido como Ruhtra. Construo aplicações modernas com foco em usabilidade, organização de código e integração real entre frontend e backend.",
       body:
-        "O foco deste portfolio e uma experiencia espacial e minimalista: menos ruido visual, mais atmosfera, leitura limpa, movimento lento e detalhes que fazem o produto parecer feito a mao.",
+        "Minha base une React, Next.js, TypeScript, Node.js, APIs REST, autenticação JWT, dashboards e sistemas de suporte. Gosto de criar produtos que parecem simples por fora, mas são bem estruturados por dentro.",
       blocks: [
         {
-          title: "Visual",
-          text: "Foco em UI/UX, hierarquia, espacamento, responsividade e qualidade visual."
+          title: "Interface",
+          text: "Foco em UI/UX, hierarquia visual, responsividade, acessibilidade e qualidade de interação."
         },
         {
           title: "Sistema",
-          text: "Experiencia pratica com frontend, backend, autenticacao, REST APIs e integracao de fluxos."
+          text: "Experiência prática com frontend, backend, autenticação, APIs REST, bancos de dados e fluxos completos."
         },
         {
-          title: "Formacao",
-          text: "Rocketseat ONE e estudo continuo em React, Next.js, Node.js e TypeScript."
+          title: "Evolução",
+          text: "Formação Rocketseat ONE e estudo contínuo em React, Next.js, Node.js, TypeScript e Linux."
         }
       ]
     },
     work: {
       kicker: "Projetos",
-      title: "Projetos principais, apresentados com calma.",
+      title: "Repositórios principais, com cara de GitHub e contexto de produto.",
       description:
-        "Cards minimalistas com profundidade sutil, luz seguindo o cursor e foco no que cada sistema entrega.",
-      open: "Abrir repositorio",
+        "Cards diretos, escaneáveis e focados no que importa: nome, descrição, stack e link para o repositório.",
+      open: "Abrir repositório",
       projects: [
         {
           title: "FastFeet API",
-          type: "API de logistica",
+          type: "API de logística",
           summary:
-            "Backend em NestJS para administradores e entregadores, com autenticacao, ciclo de entregas, entregas proximas, notificacoes e foto de comprovacao.",
+            "Backend em NestJS para administradores e entregadores, com autenticação, ciclo de entregas, entregas próximas, notificações e foto de comprovação.",
           outcome:
-            "Fluxo operacional com papeis claros, rotas protegidas e estrutura pensada para dominio."
+            "Fluxo operacional com papéis claros, rotas protegidas e estrutura pensada para domínio."
         },
         {
           title: "Help Desk",
           type: "Sistema de suporte",
           summary:
-            "Plataforma full-stack de chamados com Express, autenticacao JWT, telas por perfil e interface React/Vite/Tailwind.",
+            "Plataforma full-stack de chamados com Express, autenticação JWT, telas por perfil e interface React/Vite/Tailwind.",
           outcome:
-            "Organizacao de tickets, status e responsabilidades em uma experiencia pratica e responsiva."
+            "Organização de tickets, status e responsabilidades em uma experiência prática e responsiva."
         },
         {
           title: "Archteturis",
           type: "Framework para bots",
           summary:
-            "Framework TypeScript para bots Discord.js v14 com comandos slash modulares e arquitetura reutilizavel.",
+            "Framework TypeScript para bots Discord.js v14 com comandos slash modulares e arquitetura reutilizável.",
           outcome:
-            "Base organizada para evitar boilerplate repetido e acelerar criacao de bots."
+            "Base organizada para evitar boilerplate repetido e acelerar criação de bots."
         }
       ]
     },
     stack: {
       kicker: "Stack",
-      title: "Ferramentas organizadas por intencao.",
+      title: "Ferramentas organizadas por intenção.",
       description:
         "A stack equilibra interface, movimento, backend e camada espacial sem transformar o site em vitrine de efeitos."
     },
     contact: {
       kicker: "Contato",
-      title: "Vamos construir algo com calma, forma e funcao.",
+      title: "Vamos construir algo com calma, forma e função.",
       description:
-        "Envie uma mensagem para trabalho, colaboracao ou conversa tecnica. O formulario esta pronto para conectar a um provedor real de email.",
+        "Envie uma mensagem para trabalho, colaboração ou conversa técnica. O formulário está pronto para conectar a um provedor real de email.",
       name: "Nome",
       email: "Email",
       message: "Mensagem",
       namePlaceholder: "Seu nome",
-      emailPlaceholder: "voce@email.com",
+      emailPlaceholder: "seu@email.com",
       messagePlaceholder: "Conte o que precisa ser criado.",
       idle: "Linha direta",
       sent: "Mensagem recebida. Respondo em breve.",
@@ -117,9 +118,10 @@ export const translations = {
       language: "Language"
     },
     hero: {
-      name: "ARTHUR",
+      eyebrow: "Arthur Almeida | Sao Paulo, Brazil",
+      name: "RUHTRA",
       role: "Creative Developer",
-      line: "Building immersive digital experiences.",
+      line: "Building interfaces, APIs and digital experiences with React, Next.js, TypeScript and Node.js.",
       location: "Sao Paulo, Brazil",
       scroll: "Scroll",
       cta: "View work",
@@ -128,31 +130,31 @@ export const translations = {
     },
     about: {
       kicker: "About",
-      title: "Silent interfaces with thoughtful systems behind them.",
+      title: "Full-stack developer with a strong eye for interface, product and systems.",
       lead:
-        "I am Arthur Almeida, also Ruhtra. I build modern interfaces, APIs, dashboards, support systems and automations with React, Next.js, TypeScript and Node.js.",
+        "I am Arthur Pedroso de Almeida, also known as Ruhtra. I build modern applications with a focus on usability, code organization and real integration between frontend and backend.",
       body:
-        "This portfolio is shaped as a spatial minimalist experience: less visual noise, more atmosphere, clean reading, slow motion and details that feel handcrafted.",
+        "My foundation combines React, Next.js, TypeScript, Node.js, REST APIs, JWT authentication, dashboards and support systems. I like creating products that feel simple on the surface and well structured underneath.",
       blocks: [
         {
-          title: "Visual",
-          text: "Focused on UI/UX, hierarchy, spacing, responsiveness and visual quality."
+          title: "Interface",
+          text: "Focused on UI/UX, visual hierarchy, responsiveness, accessibility and interaction quality."
         },
         {
           title: "System",
-          text: "Practical frontend/backend experience with authentication, REST APIs and integrated flows."
+          text: "Practical frontend/backend experience with authentication, REST APIs, databases and complete flows."
         },
         {
-          title: "Formation",
-          text: "Rocketseat ONE and continuous study around React, Next.js, Node.js and TypeScript."
+          title: "Growth",
+          text: "Rocketseat ONE education and continuous study around React, Next.js, Node.js, TypeScript and Linux."
         }
       ]
     },
     work: {
       kicker: "Work",
-      title: "Main projects, presented with quiet focus.",
+      title: "Main repositories, with GitHub-like clarity and product context.",
       description:
-        "Minimal cards with subtle depth, cursor-following light and emphasis on what each system delivers.",
+        "Direct, scannable cards focused on what matters: name, description, stack and repository link.",
       open: "Open repository",
       projects: [
         {

@@ -14,10 +14,10 @@ export function ExperienceSection() {
     locale === "pt"
       ? {
           kicker: "Ambiente",
-          title: "A interface se move como uma camera lenta no espaco.",
+          title: "A interface se move como uma câmera lenta no espaço.",
           description:
-            "Camadas de particulas, scroll suave e pequenos deslocamentos criam profundidade sem transformar a pagina em um espetaculo de efeitos.",
-          center: "Espaco digital"
+            "Camadas de partículas, scroll suave e pequenos deslocamentos criam profundidade sem transformar a página em um espetáculo de efeitos.",
+          center: "Espaço digital"
         }
       : {
           kicker: "Environment",

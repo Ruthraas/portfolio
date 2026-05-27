@@ -1,7 +1,6 @@
 "use client";
 
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
-import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
 type SharedProps = {
@@ -20,21 +19,6 @@ export function MagneticButton({
   variant = "primary",
   ...props
 }: MagneticButtonProps) {
-  const ref = useRef<HTMLElement>(null);
-
-  function applyMagnet(event: React.MouseEvent<HTMLElement>) {
-    const element = ref.current;
-    if (!element) return;
-    const rect = element.getBoundingClientRect();
-    const x = event.clientX - rect.left - rect.width / 2;
-    const y = event.clientY - rect.top - rect.height / 2;
-    element.style.transform = `translate3d(${x * 0.13}px, ${y * 0.13}px, 0)`;
-  }
-
-  function resetMagnet() {
-    if (ref.current) ref.current.style.transform = "translate3d(0, 0, 0)";
-  }
-
   const classes = cn(
     "gpu-layer inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition duration-300",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--warm)]",
@@ -51,18 +35,8 @@ export function MagneticButton({
 
     return (
       <a
-        ref={ref as React.RefObject<HTMLAnchorElement>}
         {...anchorProps}
         className={classes}
-        data-cursor="Open"
-        onMouseMove={(event) => {
-          applyMagnet(event);
-          anchorProps.onMouseMove?.(event);
-        }}
-        onMouseLeave={(event) => {
-          resetMagnet();
-          anchorProps.onMouseLeave?.(event);
-        }}
       >
         <span
           className="relative z-10 inline-flex items-center gap-2"
@@ -78,18 +52,8 @@ export function MagneticButton({
 
   return (
     <button
-      ref={ref as React.RefObject<HTMLButtonElement>}
       {...buttonProps}
       className={classes}
-      data-cursor="Send"
-      onMouseMove={(event) => {
-        applyMagnet(event);
-        buttonProps.onMouseMove?.(event);
-      }}
-      onMouseLeave={(event) => {
-        resetMagnet();
-        buttonProps.onMouseLeave?.(event);
-      }}
     >
       <span
         className="relative z-10 inline-flex items-center gap-2"
