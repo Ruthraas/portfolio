@@ -52,7 +52,10 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="reveal contact-cta-3d relative isolate overflow-hidden rounded-[1.7rem] p-6 sm:p-8">
+            <div
+              data-cta-depth
+              className="reveal contact-cta-3d relative isolate overflow-hidden rounded-[1.7rem] p-6 sm:p-8"
+            >
               <div className="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(circle_at_24%_18%,rgba(216,201,165,0.16),transparent_32%),radial-gradient(circle_at_78%_78%,rgba(143,157,168,0.16),transparent_34%)]" />
               <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/42 to-transparent" />
 
@@ -70,7 +73,10 @@ export function ContactSection() {
                   <p className="max-w-[13rem] text-sm uppercase tracking-[0.24em] text-white/36">
                     {profile.email}
                   </p>
-                  <h3 className="contact-cta-title mt-7 max-w-2xl text-[clamp(3rem,9vw,6.6rem)] font-black uppercase leading-[0.82] text-white">
+                  <h3
+                    data-scroll-velocity
+                    className="contact-cta-title mt-7 max-w-2xl text-[clamp(3rem,9vw,6.6rem)] font-black uppercase leading-[0.82] text-white"
+                  >
                     {content.contact.ctaTitle}
                   </h3>
                   <p className="mt-7 max-w-xl text-base leading-8 text-white/58 md:text-lg">

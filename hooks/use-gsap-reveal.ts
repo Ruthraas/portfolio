@@ -22,7 +22,7 @@ export function useGsapReveal<T extends HTMLElement>(
     const ctx = gsap.context(() => {
       const targets = gsap.utils.toArray<HTMLElement>(
         options.selector ?? ".reveal, [data-reveal]"
-      );
+      ).filter((target) => !target.hasAttribute("data-scroll-reveal-3d"));
 
       targets.forEach((target, index) => {
         if (options.scrub) {
@@ -30,10 +30,16 @@ export function useGsapReveal<T extends HTMLElement>(
             target,
             {
               autoAlpha: 0,
+              filter: "blur(12px)",
+              rotateX: 7,
+              scale: 0.975,
               y: 28
             },
             {
               autoAlpha: 1,
+              filter: "blur(0px)",
+              rotateX: 0,
+              scale: 1,
               y: 0,
               duration: 0.95,
               delay: index * 0.035,
@@ -56,9 +62,18 @@ export function useGsapReveal<T extends HTMLElement>(
           onEnter: () => {
             gsap.fromTo(
               target,
-              { autoAlpha: 0, y: 22 },
+              {
+                autoAlpha: 0,
+                filter: "blur(10px)",
+                rotateX: 6,
+                scale: 0.98,
+                y: 22
+              },
               {
                 autoAlpha: 1,
+                filter: "blur(0px)",
+                rotateX: 0,
+                scale: 1,
                 y: 0,
                 duration: 0.8,
                 delay: index * 0.025,

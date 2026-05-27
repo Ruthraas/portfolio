@@ -37,6 +37,8 @@ export function TechStackSection() {
                 return (
                   <article
                     key={group.key}
+                    data-scroll-reveal-3d
+                    data-scroll-velocity
                     className="reveal rounded-[1.4rem] border border-[var(--line)] bg-white/[0.016] p-5"
                   >
                     <div className="flex items-center justify-between gap-4">

@@ -19,6 +19,19 @@ const icons = {
   certification: Award
 };
 
+const kindLabel = {
+  pt: {
+    experience: "Experiência",
+    education: "Formação",
+    certification: "Certificado"
+  },
+  en: {
+    experience: "Experience",
+    education: "Education",
+    certification: "Certificate"
+  }
+} as const;
+
 export function TimelineSection() {
   const ref = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -183,6 +196,7 @@ function TimelineCard({
     <article
       data-timeline-card
       data-side={item.side}
+      data-scroll-velocity
       className={cn(
         "group relative flex h-[24rem] w-[18.5rem] shrink-0 flex-col justify-between overflow-hidden rounded-[1.35rem] border border-white/12 bg-[#070707]/92 p-5 shadow-[0_1.5rem_5rem_rgba(0,0,0,0.32)] backdrop-blur-sm transition duration-500 [transform-style:preserve-3d] hover:-translate-y-2 hover:rotate-[-0.7deg] hover:border-white/38 hover:bg-[#111] hover:shadow-[0_2rem_5rem_rgba(216,201,165,0.09)] sm:w-[21rem] md:h-[21.5rem] md:w-[23rem]",
         isTop ? "md:-translate-y-44" : "md:translate-y-44"
@@ -190,6 +204,17 @@ function TimelineCard({
     >
       <span className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 [background:linear-gradient(135deg,rgba(255,255,255,0.08),transparent_36%,rgba(216,201,165,0.055))]" />
       <span className="pointer-events-none absolute -right-12 -top-12 size-32 rounded-full bg-white/[0.035] blur-2xl transition duration-500 group-hover:bg-[var(--warm)]/10" />
+      <span
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-y-0 left-0 w-1 opacity-80",
+          item.kind === "certification"
+            ? "bg-[var(--warm)]"
+            : item.kind === "education"
+              ? "bg-[var(--mist)]"
+              : "bg-white/60"
+        )}
+      />
 
       <span
         aria-hidden="true"
@@ -213,24 +238,32 @@ function TimelineCard({
 
       <div>
         <div className="flex items-start justify-between gap-4">
-          <span className="text-[clamp(3.5rem,8vw,5.5rem)] font-black leading-none tracking-[-0.08em] text-white/[0.075]">
-            {String(index + 1).padStart(2, "0")}
-          </span>
+          <div>
+            <span className="text-[clamp(3.5rem,8vw,5.5rem)] font-black leading-none tracking-[-0.08em] text-white/[0.075]">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="mt-3 inline-flex rounded-full border border-white/10 bg-white/[0.035] px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] text-white/46">
+              {kindLabel[locale][item.kind]}
+            </span>
+          </div>
           <span className="grid size-10 place-items-center rounded-full border border-white/12 bg-black/40 text-white/52 transition group-hover:border-white/26 group-hover:text-white">
             <Icon size={16} />
           </span>
         </div>
 
-        <p className="mt-6 text-[0.68rem] uppercase tracking-[0.22em] text-white/34">
-          {item.date}
-        </p>
+        <div className="mt-6 flex items-center justify-between gap-3 text-[0.68rem] uppercase tracking-[0.22em] text-white/34">
+          <p>{item.date}</p>
+          <span className="h-px flex-1 bg-white/[0.08]" />
+        </div>
         <h3 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-white md:text-[1.7rem]">
           {copy.title}
         </h3>
         <p className="mt-2 text-sm leading-6 text-white/46">{copy.place}</p>
       </div>
 
-      <p className="text-sm leading-7 text-white/58">{copy.description}</p>
+      <p className="relative text-sm leading-7 text-white/58 before:absolute before:-left-5 before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-white/[0.08]">
+        {copy.description}
+      </p>
     </article>
   );
 }

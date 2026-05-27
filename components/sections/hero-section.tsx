@@ -24,6 +24,7 @@ export function HeroSection() {
       <SplineHeroScene />
       <div className="soft-grid pointer-events-none absolute inset-0 opacity-25" />
       <motion.div
+        data-scroll-parallax="18"
         aria-hidden="true"
         initial={{ opacity: 0, y: 22, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -49,6 +50,7 @@ export function HeroSection() {
         <div className="content-shell relative">
           <AnimatePresence mode="wait">
             <motion.div
+              data-scroll-velocity
               key={locale}
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
