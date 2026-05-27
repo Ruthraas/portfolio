@@ -131,7 +131,7 @@ export function ContactSection() {
         </AnimatePresence>
 
         <footer className="mt-20 flex flex-col gap-4 border-t border-[var(--line)] py-8 text-sm text-white/32 sm:flex-row sm:items-center sm:justify-between">
-          <p>Arthur Almeida | Ruhtra</p>
+          <p>Arthur Pedroso de Almeida | Ruhtra</p>
           <p>{profile.title}</p>
         </footer>
       </div>

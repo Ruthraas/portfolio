@@ -4,15 +4,16 @@ import { AppProviders } from "@/components/providers/app-providers";
 import { GrainOverlay } from "@/components/layout/grain-overlay";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { SiteHeader } from "@/components/layout/site-header";
+import { ActionRail } from "@/components/layout/action-rail";
 
 export const metadata: Metadata = {
-  title: "Arthur Almeida | Ruhtra - Creative Developer",
+  title: "Arthur Pedroso de Almeida | Ruhtra - Creative Developer",
   description:
-    "Portfolio de Arthur Almeida, Ruhtra: desenvolvedor full-stack, técnico em eletrônica, técnico em mecatrônica e CTO focado em React, Node.js, APIs e produtos digitais.",
-  authors: [{ name: "Arthur Almeida" }],
+    "Portfolio de Arthur Pedroso de Almeida, Ruhtra: desenvolvedor full-stack, técnico em eletrônica, técnico em mecatrônica e CTO focado em React, Node.js, APIs e produtos digitais.",
+  authors: [{ name: "Arthur Pedroso de Almeida" }],
   metadataBase: new URL("https://github.com/Ruthraas"),
   openGraph: {
-    title: "Arthur Almeida | Ruhtra",
+    title: "Arthur Pedroso de Almeida | Ruhtra",
     description:
       "Full-Stack Developer | Electronics | Mechatronics | React & Node.js",
     type: "website",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arthur Almeida | Ruhtra",
+    title: "Arthur Pedroso de Almeida | Ruhtra",
     description:
       "Full-Stack Developer | Electronics | Mechatronics | React & Node.js"
   }
@@ -45,6 +46,7 @@ export default function RootLayout({
           <GrainOverlay />
           <ScrollProgress />
           <SiteHeader />
+          <ActionRail />
           {children}
         </AppProviders>
       </body>

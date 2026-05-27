@@ -1,12 +1,17 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Award, BriefcaseBusiness, GraduationCap } from "lucide-react";
-import { useRef } from "react";
+import { ArrowRight, Award, BriefcaseBusiness, GraduationCap } from "lucide-react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePortfolioI18n } from "@/components/providers/i18n-provider";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useGsapReveal } from "@/hooks/use-gsap-reveal";
 import { timelineItems } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const icons = {
   experience: BriefcaseBusiness,
@@ -16,11 +21,72 @@ const icons = {
 
 export function TimelineSection() {
   const ref = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLSpanElement>(null);
+  const arrowRef = useRef<HTMLSpanElement>(null);
   const { content, locale } = usePortfolioI18n();
   useGsapReveal(ref);
 
+  useEffect(() => {
+    const stage = stageRef.current;
+    const track = trackRef.current;
+    const line = lineRef.current;
+    const arrow = arrowRef.current;
+
+    if (!stage || !track || !line || !arrow) return;
+
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>("[data-timeline-card]");
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+        gsap.set(cards, { opacity: 0.84, scale: 0.96 });
+        gsap.set(line, { scaleX: 0.04, transformOrigin: "left center" });
+        gsap.set(arrow, { autoAlpha: 0.38, x: -12, scale: 0.88 });
+
+        const getDistance = () =>
+          Math.max(0, track.scrollWidth - window.innerWidth + window.innerWidth * 0.16);
+
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: stage,
+            start: "top top",
+            end: () => `+=${getDistance() + window.innerHeight * 0.95}`,
+            scrub: 0.9,
+            pin: true,
+            pinReparent: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true
+          }
+        });
+
+        timeline
+          .to(track, { x: () => -getDistance(), ease: "none" }, 0)
+          .to(line, { scaleX: 1, ease: "none" }, 0)
+          .to(cards, { opacity: 1, scale: 1, stagger: 0.075, ease: "none" }, 0.04)
+          .to(arrow, { autoAlpha: 1, x: 0, scale: 1, ease: "none" }, 0.55);
+
+        return () => {
+          timeline.scrollTrigger?.kill();
+          timeline.kill();
+        };
+      });
+
+      mm.add("(max-width: 767px)", () => {
+        gsap.set(cards, { clearProps: "all" });
+        gsap.set(line, { scaleX: 1, transformOrigin: "left center" });
+        gsap.set(arrow, { autoAlpha: 1, x: 0, scale: 1 });
+      });
+
+      return () => mm.revert();
+    }, stage);
+
+    return () => ctx.revert();
+  }, [locale]);
+
   return (
-    <section id="timeline" ref={ref} className="page-offset section-space">
+    <section id="timeline" ref={ref} className="page-offset section-space overflow-hidden">
       <div className="content-shell">
         <AnimatePresence mode="wait">
           <motion.div
@@ -30,56 +96,50 @@ export function TimelineSection() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="reveal mb-12">
+            <div className="reveal">
               <SectionHeading
                 kicker={content.timeline.kicker}
                 title={content.timeline.title}
                 description={content.timeline.description}
               />
             </div>
-
-            <div className="reveal max-w-full overflow-hidden">
-              <div className="no-scrollbar w-full overflow-x-auto overscroll-x-contain pb-4">
-                <div className="w-[58rem] max-w-none">
-                <div className="grid grid-cols-6 gap-4">
-                  {timelineItems.map((item) =>
-                    item.side === "top" ? (
-                      <TimelineCard key={item.content.pt.title} item={item} locale={locale} />
-                    ) : (
-                      <div key={item.content.pt.title} />
-                    )
-                  )}
-                </div>
-
-                <div className="relative my-5 grid grid-cols-6 gap-4">
-                  <div className="absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-transparent via-white/22 to-transparent" />
-                  {timelineItems.map((item) => {
-                    const Icon = icons[item.kind];
-                    return (
-                      <span
-                        key={`${item.content.pt.title}-dot`}
-                        className="relative z-10 mx-auto grid size-8 place-items-center rounded-full border border-white/14 bg-[#070707] text-white/56"
-                      >
-                        <Icon size={14} />
-                      </span>
-                    );
-                  })}
-                </div>
-
-                <div className="grid grid-cols-6 gap-4">
-                  {timelineItems.map((item) =>
-                    item.side === "bottom" ? (
-                      <TimelineCard key={item.content.pt.title} item={item} locale={locale} />
-                    ) : (
-                      <div key={item.content.pt.title} />
-                    )
-                  )}
-                </div>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </AnimatePresence>
+      </div>
+
+      <div
+        ref={stageRef}
+        className="relative mt-10 min-h-[42rem] overflow-hidden md:min-h-[100svh]"
+      >
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 hidden w-[12vw] bg-gradient-to-r from-[#030303] to-transparent md:block" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 hidden w-[12vw] bg-gradient-to-l from-[#030303] to-transparent md:block" />
+
+        <div className="pointer-events-none absolute left-4 right-4 top-1/2 z-0 h-px bg-white/[0.06] md:left-[8vw] md:right-[8vw]">
+          <span
+            ref={lineRef}
+            className="absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-white/10 via-white/42 to-white/70"
+          />
+          <span
+            ref={arrowRef}
+            className="absolute -right-3 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full border border-white/18 bg-[#030303] text-white/68"
+          >
+            <ArrowRight size={15} />
+          </span>
+        </div>
+
+        <div
+          ref={trackRef}
+          className="no-scrollbar relative z-10 flex h-[42rem] gap-5 overflow-x-auto px-4 py-24 md:h-[100svh] md:w-max md:items-center md:gap-8 md:overflow-visible md:px-[max(7rem,calc((100vw-76rem)/2+7rem))]"
+        >
+          {timelineItems.map((item, index) => (
+            <TimelineCard
+              key={`${item.content.pt.title}-${index}`}
+              index={index}
+              item={item}
+              locale={locale}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -87,17 +147,47 @@ export function TimelineSection() {
 
 type TimelineItem = (typeof timelineItems)[number];
 
-function TimelineCard({ item, locale }: { item: TimelineItem; locale: "pt" | "en" }) {
+function TimelineCard({
+  item,
+  index,
+  locale
+}: {
+  item: TimelineItem;
+  index: number;
+  locale: "pt" | "en";
+}) {
   const copy = item.content[locale];
+  const Icon = icons[item.kind];
+  const isTop = item.side === "top";
 
   return (
-    <article className="rounded-[1rem] border border-white/10 bg-white/[0.018] p-4">
-      <p className="text-[0.68rem] uppercase tracking-[0.18em] text-white/34">
-        {item.date}
-      </p>
-      <h3 className="mt-2 text-sm font-semibold text-white/88">{copy.title}</h3>
-      <p className="mt-1 text-xs text-white/46">{copy.place}</p>
-      <p className="mt-3 text-xs leading-5 text-white/54">{copy.description}</p>
+    <article
+      data-timeline-card
+      className={cn(
+        "group relative flex h-[24rem] w-[18.5rem] shrink-0 flex-col justify-between rounded-[1.35rem] border border-white/12 bg-[#060606]/88 p-5 shadow-[0_1.5rem_5rem_rgba(0,0,0,0.32)] backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:border-white/28 hover:bg-white/[0.035] sm:w-[21rem] md:h-[26rem] md:w-[25rem]",
+        isTop ? "md:-translate-y-24" : "md:translate-y-24"
+      )}
+    >
+      <div>
+        <div className="flex items-start justify-between gap-4">
+          <span className="text-[clamp(3.5rem,8vw,5.5rem)] font-black leading-none tracking-[-0.08em] text-white/[0.075]">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="grid size-10 place-items-center rounded-full border border-white/12 bg-black/40 text-white/52 transition group-hover:border-white/26 group-hover:text-white">
+            <Icon size={16} />
+          </span>
+        </div>
+
+        <p className="mt-6 text-[0.68rem] uppercase tracking-[0.22em] text-white/34">
+          {item.date}
+        </p>
+        <h3 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-white md:text-[1.7rem]">
+          {copy.title}
+        </h3>
+        <p className="mt-2 text-sm leading-6 text-white/46">{copy.place}</p>
+      </div>
+
+      <p className="text-sm leading-7 text-white/58">{copy.description}</p>
     </article>
   );
 }

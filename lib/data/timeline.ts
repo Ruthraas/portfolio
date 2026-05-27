@@ -60,6 +60,40 @@ export const timelineItems: TimelineItem[] = [
     }
   },
   {
+    date: "Rocketseat ONE",
+    side: "bottom",
+    kind: "education",
+    content: {
+      pt: {
+        title: "Formação contínua",
+        place: "Rocketseat",
+        description: "Estudos contínuos em React, Next.js, Node.js, TypeScript e Linux."
+      },
+      en: {
+        title: "Continuous Education",
+        place: "Rocketseat",
+        description: "Ongoing study in React, Next.js, Node.js, TypeScript and Linux."
+      }
+    }
+  },
+  {
+    date: "Rocketseat",
+    side: "top",
+    kind: "certification",
+    content: {
+      pt: {
+        title: "Desbloqueando a programação",
+        place: "Certificação",
+        description: "Fundamentos de lógica, base de programação e evolução de raciocínio técnico."
+      },
+      en: {
+        title: "Unlocking Programming",
+        place: "Certification",
+        description: "Logic fundamentals, programming base and technical reasoning growth."
+      }
+    }
+  },
+  {
     date: "Rocketseat",
     side: "bottom",
     kind: "certification",

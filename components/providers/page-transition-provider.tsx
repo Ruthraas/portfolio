@@ -32,7 +32,10 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
           y: 0,
           duration: 1.05,
           ease: "power4.out",
-          delay: 0.42
+          delay: 0.42,
+          onComplete: () => {
+            gsap.set("[data-page-root]", { clearProps: "transform" });
+          }
         }
       );
     }, ref);

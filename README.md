@@ -1,10 +1,10 @@
-# Arthur Almeida | Ruhtra Portfolio
+# Arthur Pedroso de Almeida | Ruhtra Portfolio
 
 Minimal cinematic developer portfolio built with Next.js 15, React, TypeScript, TailwindCSS, GSAP, Lenis, Framer Motion, Spline and i18next.
 
 ## Direction
 
-This version is a calm spatial portfolio: black background, Spline-powered hero atmosphere, restrained typography, fixed header navigation, PT/EN language switching, a horizontal career timeline and compact GitHub-style project cards.
+This version is a calm spatial portfolio: black background, Spline-powered hero atmosphere, restrained typography, fixed header navigation, fixed action rail, PT/EN language switching, a scroll-driven horizontal career timeline and compact GitHub-style project cards.
 
 ## Featured Projects
 

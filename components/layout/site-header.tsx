@@ -54,7 +54,7 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex min-h-14 max-w-[76rem] items-center justify-between gap-4 rounded-full border border-white/10 bg-black/54 px-4 shadow-[0_1rem_4rem_rgba(0,0,0,0.24)] backdrop-blur-xl sm:px-5">
         <a href="#top" className="shrink-0">
-          <span className="block text-[0.7rem] uppercase tracking-[0.22em] text-white/36">
+          <span className="block max-w-[12.5rem] truncate text-[0.7rem] uppercase tracking-[0.22em] text-white/36 sm:max-w-none">
             {profile.displayName}
           </span>
           <span className="block text-sm font-semibold text-white/88">{profile.alias}</span>
@@ -83,14 +83,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noreferrer"
-            className="hidden text-xs font-medium text-white/46 transition hover:text-white sm:block"
-          >
-            GitHub
-          </a>
           <LanguageToggle locale={locale} setLocale={setLocale} />
         </div>
       </div>

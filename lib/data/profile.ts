@@ -2,7 +2,7 @@ import { Code, Mail, Network } from "lucide-react";
 
 export const profile = {
   name: "Arthur Pedroso de Almeida",
-  displayName: "Arthur Almeida",
+  displayName: "Arthur Pedroso de Almeida",
   alias: "Ruhtra",
   title:
     "Desenvolvedor Full-Stack | Técnico em Eletrônica | Técnico em Mecatrônica | CTO",

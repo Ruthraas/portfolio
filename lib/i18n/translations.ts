@@ -11,8 +11,25 @@ export const translations = {
       stack: "Stack",
       contact: "Contato"
     },
+    actions: {
+      label: "Ações rápidas",
+      items: {
+        linkedin: {
+          title: "Acessar LinkedIn",
+          description: "Perfil profissional e trajetória."
+        },
+        projects: {
+          title: "Acessar projetos",
+          description: "Repositórios principais no portfolio."
+        },
+        resume: {
+          title: "Baixar currículo",
+          description: "Resumo profissional em PDF."
+        }
+      }
+    },
     hero: {
-      eyebrow: "Arthur Almeida | São Paulo, Brasil",
+      eyebrow: "Arthur Pedroso de Almeida | São Paulo, Brasil",
       name: "RUHTRA",
       role: "Creative Developer",
       line: "Desenvolvedor full-stack, técnico em eletrônica e mecatrônica, criando produtos digitais com precisão visual e base técnica.",
@@ -115,8 +132,25 @@ export const translations = {
       stack: "Stack",
       contact: "Contact"
     },
+    actions: {
+      label: "Quick actions",
+      items: {
+        linkedin: {
+          title: "Open LinkedIn",
+          description: "Professional profile and career path."
+        },
+        projects: {
+          title: "Open projects",
+          description: "Main repositories in the portfolio."
+        },
+        resume: {
+          title: "Download resume",
+          description: "Professional summary in PDF."
+        }
+      }
+    },
     hero: {
-      eyebrow: "Arthur Almeida | Sao Paulo, Brazil",
+      eyebrow: "Arthur Pedroso de Almeida | Sao Paulo, Brazil",
       name: "RUHTRA",
       role: "Creative Developer",
       line: "Full-stack developer, electronics and mechatronics technician, building digital products with visual precision and technical depth.",
