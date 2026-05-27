@@ -41,7 +41,7 @@ export function TechStackSection() {
                   >
                     <div className="flex items-center justify-between gap-4">
                       <h3 className="text-lg font-normal capitalize text-white/86">
-                        {group.key}
+                        {group.label}
                       </h3>
                       <Icon size={18} className="text-white/36" />
                     </div>

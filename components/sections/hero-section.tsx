@@ -2,10 +2,18 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
+import dynamic from "next/dynamic";
 import { usePortfolioI18n } from "@/components/providers/i18n-provider";
-import { SplineHeroScene } from "@/components/spline/spline-hero-scene";
-import { MagneticButton } from "@/components/ui/magnetic-button";
+import { ActionButton } from "@/components/ui/action-button";
 import { profile } from "@/lib/site-data";
+
+const SplineHeroScene = dynamic(
+  () => import("@/components/spline/spline-hero-scene").then((mod) => mod.SplineHeroScene),
+  {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 bg-[#030303]" />
+  }
+);
 
 export function HeroSection() {
   const { content, locale } = usePortfolioI18n();
@@ -33,7 +41,7 @@ export function HeroSection() {
               <p className="text-xs uppercase tracking-[0.32em] text-white/36">
                 {content.hero.eyebrow}
               </p>
-              <h1 className="mt-8 text-[clamp(4.8rem,16vw,13rem)] font-black uppercase leading-[0.78] tracking-[0.02em] text-[var(--fg)]">
+              <h1 className="mt-8 text-[clamp(3.45rem,16vw,13rem)] font-black uppercase leading-[0.78] tracking-[0.02em] text-[var(--fg)]">
                 {content.hero.name}
               </h1>
               <p className="mt-7 text-xl font-normal text-white/80 md:text-2xl">
@@ -44,15 +52,15 @@ export function HeroSection() {
               </p>
 
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <MagneticButton href="#work">
+                <ActionButton href="#work">
                   {content.hero.cta}
                   <ArrowDown size={17} />
-                </MagneticButton>
-                <MagneticButton href={profile.resume} download variant="ghost">
+                </ActionButton>
+                <ActionButton href={profile.resume} download variant="ghost">
                   {content.hero.resume}
                   <Download size={17} />
-                </MagneticButton>
-                <MagneticButton
+                </ActionButton>
+                <ActionButton
                   href={profile.github}
                   target="_blank"
                   rel="noreferrer"
@@ -60,7 +68,7 @@ export function HeroSection() {
                 >
                   {content.hero.github}
                   <ArrowUpRight size={17} />
-                </MagneticButton>
+                </ActionButton>
               </div>
             </motion.div>
           </AnimatePresence>

@@ -22,6 +22,8 @@
 
 html {
   background: var(--bg);
+  overflow-x: hidden;
+  scroll-padding-top: 7rem;
   scroll-behavior: auto;
 }
 
@@ -62,7 +64,7 @@ textarea {
 
 @layer components {
   .content-shell {
-    width: min(1120px, calc(100vw - 2rem));
+    width: min(76rem, calc(100vw - 2rem));
     margin-inline: auto;
   }
 
@@ -71,7 +73,8 @@ textarea {
   }
 
   .section-space {
-    padding-block: 8rem;
+    padding-block: 7rem;
+    scroll-margin-top: 7rem;
   }
 
   .panel {
@@ -156,14 +159,13 @@ textarea {
   }
 }
 
-@media (min-width: 1024px) {
-  .page-offset {
-    padding-left: 13rem;
-  }
-}
-
 @media (max-width: 768px) {
+  html {
+    scroll-padding-top: 11rem;
+  }
+
   .section-space {
-    padding-block: 5.5rem;
+    padding-block: 4.5rem;
+    scroll-margin-top: 11rem;
   }
 }

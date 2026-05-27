@@ -7,19 +7,15 @@ export const translations = {
     nav: {
       work: "Projetos",
       about: "Sobre",
+      timeline: "Trajetória",
       stack: "Stack",
       contact: "Contato"
-    },
-    sidebar: {
-      role: "Creative Developer",
-      social: "Social",
-      language: "Idioma"
     },
     hero: {
       eyebrow: "Arthur Almeida | São Paulo, Brasil",
       name: "RUHTRA",
       role: "Creative Developer",
-      line: "Desenvolvendo interfaces, APIs e experiências digitais com React, Next.js, TypeScript e Node.js.",
+      line: "Desenvolvedor full-stack, técnico em eletrônica e mecatrônica, criando produtos digitais com precisão visual e base técnica.",
       location: "São Paulo, Brasil",
       scroll: "Role",
       cta: "Ver projetos",
@@ -28,31 +24,37 @@ export const translations = {
     },
     about: {
       kicker: "Sobre",
-      title: "Desenvolvedor full-stack com olhar forte para interface, produto e sistemas.",
+      title: "Sobre mim, sem pose e sem ruído.",
       lead:
-        "Sou Arthur Pedroso de Almeida, também conhecido como Ruhtra. Construo aplicações modernas com foco em usabilidade, organização de código e integração real entre frontend e backend.",
+        "Sou Arthur Pedroso de Almeida, também conhecido como Ruhtra. Minha trajetória mistura desenvolvimento full-stack, eletrônica, mecatrônica, suporte técnico e liderança técnica.",
       body:
-        "Minha base une React, Next.js, TypeScript, Node.js, APIs REST, autenticação JWT, dashboards e sistemas de suporte. Gosto de criar produtos que parecem simples por fora, mas são bem estruturados por dentro.",
+        "Atuo com React, Next.js, TypeScript, Node.js, APIs REST, autenticação JWT, dashboards e sistemas de suporte. No LinkedIn, minha base aparece bem direta: tecnologia, operação, produto e vontade de construir com responsabilidade.",
       blocks: [
         {
-          title: "Interface",
-          text: "Foco em UI/UX, hierarquia visual, responsividade, acessibilidade e qualidade de interação."
+          title: "Full-stack",
+          text: "Interfaces modernas conectadas a APIs, autenticação, bancos de dados e fluxos reais."
         },
         {
-          title: "Sistema",
-          text: "Experiência prática com frontend, backend, autenticação, APIs REST, bancos de dados e fluxos completos."
+          title: "Técnico",
+          text: "Formação em eletrônica e mecatrônica, com experiência prática em suporte técnico."
         },
         {
-          title: "Evolução",
-          text: "Formação Rocketseat ONE e estudo contínuo em React, Next.js, Node.js, TypeScript e Linux."
+          title: "Produto",
+          text: "Perfil empreendedor, CTO e sócio proprietário da Aurora Technology Society."
         }
       ]
     },
+    timeline: {
+      kicker: "Trajetória",
+      title: "Experiência, formação e certificados em uma linha só.",
+      description:
+        "Uma leitura horizontal da minha base profissional: ETEC, eletrônica, suporte técnico e certificações Rocketseat."
+    },
     work: {
       kicker: "Projetos",
-      title: "Repositórios principais, com cara de GitHub e contexto de produto.",
+      title: "Projetos principais, lado a lado e direto ao ponto.",
       description:
-        "Cards diretos, escaneáveis e focados no que importa: nome, descrição, stack e link para o repositório.",
+        "Cards menores no estilo repositório: nome, descrição, stack e acesso rápido ao GitHub.",
       open: "Abrir repositório",
       projects: [
         {
@@ -83,9 +85,9 @@ export const translations = {
     },
     stack: {
       kicker: "Stack",
-      title: "Ferramentas organizadas por intenção.",
+      title: "Stack usada para construir produtos completos.",
       description:
-        "A stack equilibra interface, movimento, backend e camada espacial sem transformar o site em vitrine de efeitos."
+        "Uma base prática entre frontend, backend, dados, sistemas e ferramentas do dia a dia."
     },
     contact: {
       kicker: "Contato",
@@ -109,19 +111,15 @@ export const translations = {
     nav: {
       work: "Work",
       about: "About",
+      timeline: "Timeline",
       stack: "Stack",
       contact: "Contact"
-    },
-    sidebar: {
-      role: "Creative Developer",
-      social: "Social",
-      language: "Language"
     },
     hero: {
       eyebrow: "Arthur Almeida | Sao Paulo, Brazil",
       name: "RUHTRA",
       role: "Creative Developer",
-      line: "Building interfaces, APIs and digital experiences with React, Next.js, TypeScript and Node.js.",
+      line: "Full-stack developer, electronics and mechatronics technician, building digital products with visual precision and technical depth.",
       location: "Sao Paulo, Brazil",
       scroll: "Scroll",
       cta: "View work",
@@ -130,31 +128,37 @@ export const translations = {
     },
     about: {
       kicker: "About",
-      title: "Full-stack developer with a strong eye for interface, product and systems.",
+      title: "About me, no pose and no noise.",
       lead:
-        "I am Arthur Pedroso de Almeida, also known as Ruhtra. I build modern applications with a focus on usability, code organization and real integration between frontend and backend.",
+        "I am Arthur Pedroso de Almeida, also known as Ruhtra. My path combines full-stack development, electronics, mechatronics, technical support and technical leadership.",
       body:
-        "My foundation combines React, Next.js, TypeScript, Node.js, REST APIs, JWT authentication, dashboards and support systems. I like creating products that feel simple on the surface and well structured underneath.",
+        "I work with React, Next.js, TypeScript, Node.js, REST APIs, JWT authentication, dashboards and support systems. My profile is direct: technology, operations, product thinking and the will to build responsibly.",
       blocks: [
         {
-          title: "Interface",
-          text: "Focused on UI/UX, visual hierarchy, responsiveness, accessibility and interaction quality."
+          title: "Full-stack",
+          text: "Modern interfaces connected to APIs, authentication, databases and real workflows."
         },
         {
-          title: "System",
-          text: "Practical frontend/backend experience with authentication, REST APIs, databases and complete flows."
+          title: "Technical",
+          text: "Education in electronics and mechatronics, with practical technical support experience."
         },
         {
-          title: "Growth",
-          text: "Rocketseat ONE education and continuous study around React, Next.js, Node.js, TypeScript and Linux."
+          title: "Product",
+          text: "Entrepreneurial profile, CTO and owner-partner at Aurora Technology Society."
         }
       ]
     },
+    timeline: {
+      kicker: "Timeline",
+      title: "Experience, education and certificates in one line.",
+      description:
+        "A horizontal read of my professional base: ETEC, electronics, technical support and Rocketseat certifications."
+    },
     work: {
       kicker: "Work",
-      title: "Main repositories, with GitHub-like clarity and product context.",
+      title: "Main projects, side by side and straight to the point.",
       description:
-        "Direct, scannable cards focused on what matters: name, description, stack and repository link.",
+        "Smaller repository-style cards: name, description, stack and quick access to GitHub.",
       open: "Open repository",
       projects: [
         {
@@ -185,9 +189,9 @@ export const translations = {
     },
     stack: {
       kicker: "Stack",
-      title: "Tools organized by intention.",
+      title: "Stack used to build complete products.",
       description:
-        "The stack balances interface, motion, backend and spatial layers without turning the site into an effects showcase."
+        "A practical base across frontend, backend, data, systems and everyday tools."
     },
     contact: {
       kicker: "Contact",

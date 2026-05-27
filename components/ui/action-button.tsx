@@ -1,5 +1,3 @@
-"use client";
-
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -9,16 +7,16 @@ type SharedProps = {
   variant?: "primary" | "ghost";
 };
 
-type MagneticButtonProps =
+type ActionButtonProps =
   | (SharedProps & AnchorHTMLAttributes<HTMLAnchorElement> & { href: string })
   | (SharedProps & ButtonHTMLAttributes<HTMLButtonElement> & { href?: never });
 
-export function MagneticButton({
+export function ActionButton({
   children,
   className,
   variant = "primary",
   ...props
-}: MagneticButtonProps) {
+}: ActionButtonProps) {
   const classes = cn(
     "gpu-layer inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition duration-300",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--warm)]",
@@ -34,10 +32,7 @@ export function MagneticButton({
     };
 
     return (
-      <a
-        {...anchorProps}
-        className={classes}
-      >
+      <a {...anchorProps} className={classes}>
         <span
           className="relative z-10 inline-flex items-center gap-2"
           style={variant === "primary" ? { color: "#050505" } : undefined}
@@ -51,10 +46,7 @@ export function MagneticButton({
   const buttonProps = props as ButtonHTMLAttributes<HTMLButtonElement>;
 
   return (
-    <button
-      {...buttonProps}
-      className={classes}
-    >
+    <button {...buttonProps} className={classes}>
       <span
         className="relative z-10 inline-flex items-center gap-2"
         style={variant === "primary" ? { color: "#050505" } : undefined}

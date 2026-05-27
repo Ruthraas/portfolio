@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { FormEvent, useRef, useState } from "react";
 import { usePortfolioI18n } from "@/components/providers/i18n-provider";
-import { MagneticButton } from "@/components/ui/magnetic-button";
+import { ActionButton } from "@/components/ui/action-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useGsapReveal } from "@/hooks/use-gsap-reveal";
 import { profile, socials } from "@/lib/site-data";
@@ -121,10 +121,10 @@ export function ContactSection() {
 
               <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <p className="min-h-6 text-sm text-white/46">{statusText}</p>
-                <MagneticButton type="submit" disabled={status === "loading"}>
+                <ActionButton type="submit" disabled={status === "loading"}>
                   {status === "loading" ? content.contact.sending : content.contact.send}
                   <ArrowUpRight size={18} />
-                </MagneticButton>
+                </ActionButton>
               </div>
             </form>
           </motion.div>

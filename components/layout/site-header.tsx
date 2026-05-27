@@ -1,0 +1,141 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { usePortfolioI18n } from "@/components/providers/i18n-provider";
+import { navSections, profile } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
+import type { Locale } from "@/lib/i18n/translations";
+
+export function SiteHeader() {
+  const { content, locale, setLocale } = usePortfolioI18n();
+  const [active, setActive] = useState("top");
+
+  useEffect(() => {
+    const ids = ["top", ...navSections.map((item) => item.id)];
+    let frame = 0;
+
+    const updateActiveSection = () => {
+      frame = 0;
+      const focusLine = window.innerHeight * 0.36;
+      const current =
+        ids.find((id) => {
+          const element = document.getElementById(id);
+          if (!element) return false;
+          const rect = element.getBoundingClientRect();
+          return rect.top <= focusLine && rect.bottom > focusLine;
+        }) ?? "top";
+
+      setActive(current);
+    };
+
+    const requestUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
+  }, []);
+
+  return (
+    <motion.header
+      initial={{ y: -18, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+      className="fixed left-4 right-4 top-4 z-[60] lg:left-8 lg:right-8"
+    >
+      <div className="mx-auto flex min-h-14 max-w-[76rem] items-center justify-between gap-4 rounded-full border border-white/10 bg-black/54 px-4 shadow-[0_1rem_4rem_rgba(0,0,0,0.24)] backdrop-blur-xl sm:px-5">
+        <a href="#top" className="shrink-0">
+          <span className="block text-[0.7rem] uppercase tracking-[0.22em] text-white/36">
+            {profile.displayName}
+          </span>
+          <span className="block text-sm font-semibold text-white/88">{profile.alias}</span>
+        </a>
+
+        <nav
+          aria-label="Principal"
+          className="hidden items-center gap-1 rounded-full border border-white/[0.06] bg-white/[0.025] p-1 md:flex"
+        >
+          {navSections.map((item) => {
+            const isActive = active === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "rounded-full px-3 py-2 text-xs font-medium transition",
+                  isActive ? "bg-white text-black" : "text-white/48 hover:text-white"
+                )}
+              >
+                {content.nav[item.key]}
+              </a>
+            );
+          })}
+        </nav>
+
+        <div className="flex items-center gap-3">
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden text-xs font-medium text-white/46 transition hover:text-white sm:block"
+          >
+            GitHub
+          </a>
+          <LanguageToggle locale={locale} setLocale={setLocale} />
+        </div>
+      </div>
+
+      <nav
+        aria-label="Navegação mobile"
+        className="no-scrollbar mx-auto mt-2 flex max-w-[calc(100vw-2rem)] gap-2 overflow-x-auto rounded-full border border-white/10 bg-black/48 p-1 backdrop-blur-xl md:hidden"
+      >
+        {navSections.map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            className="shrink-0 rounded-full px-3 py-2 text-xs text-white/58"
+          >
+            {content.nav[item.key]}
+          </a>
+        ))}
+      </nav>
+    </motion.header>
+  );
+}
+
+function LanguageToggle({
+  locale,
+  setLocale
+}: {
+  locale: Locale;
+  setLocale: (locale: Locale) => void;
+}) {
+  return (
+    <div className="inline-flex rounded-full border border-white/10 p-1">
+      {(["pt", "en"] as Locale[]).map((item) => (
+        <button
+          key={item}
+          type="button"
+          onClick={() => setLocale(item)}
+          className={cn(
+            "rounded-full px-3 py-1 text-xs uppercase transition",
+            locale === item ? "bg-white text-black" : "text-white/42 hover:text-white"
+          )}
+          aria-pressed={locale === item}
+        >
+          {item}
+        </button>
+      ))}
+    </div>
+  );
+}
