@@ -57,7 +57,9 @@ export function SiteHeader() {
           <span className="block max-w-[12.5rem] truncate text-[0.7rem] uppercase tracking-[0.22em] text-white/36 sm:max-w-none">
             {profile.displayName}
           </span>
-          <span className="block text-sm font-semibold text-white/88">{profile.alias}</span>
+          <span className="block text-sm font-semibold text-white/88">
+            {profile.alias}
+          </span>
         </a>
 
         <nav
@@ -72,8 +74,10 @@ export function SiteHeader() {
                 href={`#${item.id}`}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "rounded-full px-3 py-2 text-xs font-medium transition",
-                  isActive ? "bg-white text-black" : "text-white/48 hover:text-white"
+                  "rounded-full border px-3 py-2 text-xs font-medium transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70",
+                  isActive
+                    ? "border-white bg-white text-black shadow-[0_0.65rem_1.6rem_rgba(255,255,255,0.14)]"
+                    : "border-transparent text-white/52 hover:border-white/10 hover:bg-transparent hover:text-white hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]",
                 )}
               >
                 {content.nav[item.key]}
@@ -91,15 +95,24 @@ export function SiteHeader() {
         aria-label="Navegação mobile"
         className="no-scrollbar mx-auto mt-2 flex max-w-[calc(100vw-2rem)] gap-2 overflow-x-auto rounded-full border border-white/10 bg-black/48 p-1 backdrop-blur-xl md:hidden"
       >
-        {navSections.map((item) => (
-          <a
-            key={item.id}
-            href={`#${item.id}`}
-            className="shrink-0 rounded-full px-3 py-2 text-xs text-white/58"
-          >
-            {content.nav[item.key]}
-          </a>
-        ))}
+        {navSections.map((item) => {
+          const isActive = active === item.id;
+          return (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              aria-current={isActive ? "page" : undefined}
+              className={cn(
+                "shrink-0 rounded-full border px-3 py-2 text-xs transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70",
+                isActive
+                  ? "border-white bg-white text-black"
+                  : "border-transparent text-white/58 hover:border-white/10 hover:bg-transparent hover:text-white",
+              )}
+            >
+              {content.nav[item.key]}
+            </a>
+          );
+        })}
       </nav>
     </motion.header>
   );
@@ -107,7 +120,7 @@ export function SiteHeader() {
 
 function LanguageToggle({
   locale,
-  setLocale
+  setLocale,
 }: {
   locale: Locale;
   setLocale: (locale: Locale) => void;
@@ -120,8 +133,10 @@ function LanguageToggle({
           type="button"
           onClick={() => setLocale(item)}
           className={cn(
-            "rounded-full px-3 py-1 text-xs uppercase transition",
-            locale === item ? "bg-white text-black" : "text-white/42 hover:text-white"
+            "rounded-full border px-3 py-1 text-xs uppercase transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70",
+            locale === item
+              ? "border-white bg-white text-black"
+              : "border-transparent text-white/42 hover:border-white/10 hover:bg-transparent hover:text-white",
           )}
           aria-pressed={locale === item}
         >

@@ -37,7 +37,7 @@ export function ProjectCard({
               </h3>
             </div>
           </div>
-          <span className="grid size-8 shrink-0 place-items-center rounded-full border border-[var(--line)] text-white/42 transition group-hover:border-white/50 group-hover:bg-white group-hover:text-black">
+          <span className="grid size-8 shrink-0 place-items-center rounded-full border border-[var(--line)] text-white/42 transition group-hover:border-white/50 group-hover:bg-transparent group-hover:text-white">
             <ArrowUpRight size={15} />
           </span>
         </div>

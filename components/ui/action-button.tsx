@@ -22,7 +22,7 @@ export function ActionButton({
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--warm)]",
     variant === "primary"
       ? "bg-[var(--fg)] text-black shadow-[0_20px_80px_rgba(244,241,234,0.16)] hover:bg-[var(--warm)]"
-      : "border border-[var(--line)] bg-white/[0.035] text-white/70 hover:border-white/24 hover:bg-white/[0.065] hover:text-white",
+      : "border border-[var(--line)] bg-white/[0.035] text-white/70 hover:border-white/24 hover:bg-transparent hover:text-white",
     className
   );
 

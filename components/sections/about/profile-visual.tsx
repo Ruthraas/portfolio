@@ -21,7 +21,7 @@ export function ProfileVisual() {
       />
       <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
         <Image
-          src="/images/arthur-profile.svg"
+          src="/images/arthur-profile.png"
           alt="Retrato editorial de Arthur Pedroso de Almeida"
           width={900}
           height={1100}
