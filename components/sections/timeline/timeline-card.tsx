@@ -18,8 +18,9 @@ export function TimelineCard({ index, item, locale, position }: TimelineCardProp
 
   return (
     <article
+      data-timeline-card
       className={cn(
-        "relative flex h-[32rem] w-[19.5rem] shrink-0 snap-center flex-col sm:w-[22rem]",
+        "relative flex h-[32rem] w-[19.5rem] shrink-0 snap-center flex-col transition-[filter,opacity,transform] duration-300 [--timeline-drift:0] [--timeline-focus:0] [filter:saturate(calc(0.78+var(--timeline-focus)*0.22))] [opacity:calc(0.64+var(--timeline-focus)*0.36)] [transform:translateY(calc((1-var(--timeline-focus))*10px))_rotateY(calc(var(--timeline-drift)*-5deg))_scale(calc(0.955+var(--timeline-focus)*0.045))] sm:w-[22rem]",
         isTop ? "justify-start" : "justify-end"
       )}
     >
@@ -44,7 +45,7 @@ export function TimelineCard({ index, item, locale, position }: TimelineCardProp
         )}
       />
 
-      <div className="group relative overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#070707]/92 p-5 shadow-[0_1.4rem_4rem_rgba(0,0,0,0.3)] transition duration-300 hover:-translate-y-1 hover:border-white/26 hover:bg-[#101010]">
+      <div className="group relative overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#070707]/92 p-5 shadow-[0_1.4rem_4rem_rgba(0,0,0,0.3)] transition duration-300 hover:-translate-y-1 hover:border-white/26 hover:bg-[#101010] hover:shadow-[0_1.8rem_5rem_rgba(216,201,165,0.08)]">
         <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/24 to-transparent" />
         <span className={cn("pointer-events-none absolute inset-x-0 h-1", isTop ? "bottom-0" : "top-0", accent.bar)} />
 
