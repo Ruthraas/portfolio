@@ -4,7 +4,7 @@ import { AppProviders } from "@/components/providers/app-providers";
 import { CustomCursor } from "@/components/layout/custom-cursor";
 import { GrainOverlay } from "@/components/layout/grain-overlay";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
-import { SiteHeader } from "@/components/layout/site-header";
+import { Sidebar } from "@/components/layout/sidebar";
 
 export const metadata: Metadata = {
   title: "Arthur Almeida | Ruhtra - Creative Developer",
@@ -45,7 +45,7 @@ export default function RootLayout({
         <AppProviders>
           <GrainOverlay />
           <ScrollProgress />
-          <SiteHeader />
+          <Sidebar />
           {children}
           <CustomCursor />
         </AppProviders>

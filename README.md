@@ -1,10 +1,10 @@
 # Arthur Almeida | Ruhtra Portfolio
 
-Ultra-minimal cinematic developer portfolio built with Next.js 15, React, TypeScript, TailwindCSS, GSAP, ScrollTrigger, Lenis, Framer Motion, React Three Fiber, Three.js and GLSL shaders.
+Minimal cinematic developer portfolio built with Next.js 15, React, TypeScript, TailwindCSS, GSAP, Lenis, Framer Motion, React Three Fiber, Three.js and i18next.
 
 ## Direction
 
-This version removes the Spline direction and rebuilds the experience around a restrained atmospheric 3D layer. The premium feeling comes from spacing, typography, subtle lighting, smooth scroll, shader motion, depth fog and quiet interaction details.
+This version is a calm spatial portfolio: black background, tiny star layers, restrained typography, fixed sidebar navigation, PT/EN language switching and subtle scroll depth. It avoids cyberpunk visuals, neon, heavy blur and noisy motion.
 
 ## Featured Projects
 
@@ -18,12 +18,11 @@ This version removes the Spline direction and rebuilds the experience around a r
 - React 19
 - TypeScript
 - TailwindCSS v4
-- React Three Fiber
-- Three.js
-- GLSL shaders
+- React Three Fiber + Three.js
 - GSAP + ScrollTrigger
 - Lenis smooth scroll
 - Framer Motion
+- i18next + react-i18next
 
 ## Getting Started
 
@@ -46,9 +45,9 @@ npm audit --omit=dev
 ## Structure
 
 - `app/`: App Router pages, layout, global styles and contact route.
-- `components/three/`: R3F scene, cinematic lighting and postprocessing.
-- `components/sections/`: minimalist portfolio sections.
-- `components/providers/`: Lenis and page transition infrastructure.
-- `lib/shaders.ts`: reusable GLSL shader programs.
-- `lib/site-data.ts`: content and project data source of truth.
+- `components/three/`: spatial particle background.
+- `components/layout/`: sidebar, cursor, grain and scroll progress.
+- `components/providers/`: i18n, Lenis and intro transition infrastructure.
+- `lib/i18n/`: PT/EN translation resources.
+- `lib/site-data.ts`: static links, project metadata and stack data.
 - `public/resume/`: downloadable resume in HTML and PDF.

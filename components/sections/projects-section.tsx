@@ -1,39 +1,71 @@
 "use client";
 
-import { useRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
+import { usePortfolioI18n } from "@/components/providers/i18n-provider";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useGsapReveal } from "@/hooks/use-gsap-reveal";
-import { projects } from "@/lib/site-data";
+import { projectMeta } from "@/lib/site-data";
 
 export function ProjectsSection() {
   const ref = useRef<HTMLElement>(null);
+  const { content, locale } = usePortfolioI18n();
   useGsapReveal(ref);
 
   return (
-    <section id="work" ref={ref} className="section-y border-b border-[var(--line)]">
-      <div className="container-x">
-        <div className="reveal mb-14">
-          <SectionHeading
-            kicker="Selected work"
-            title="Project cards with depth, restraint and live lighting."
-            description="A minimal showcase for backend systems, support flows and developer tooling, shaped with precise motion instead of visual noise."
-          />
-        </div>
+    <section id="work" ref={ref} className="page-offset section-space">
+      <div className="content-shell">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={locale}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="reveal mb-12">
+              <SectionHeading
+                kicker={content.work.kicker}
+                title={content.work.title}
+                description={content.work.description}
+              />
+            </div>
 
-        <div className="grid gap-5">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
-          ))}
-        </div>
+            <div className="space-y-4">
+              {projectMeta.map((meta, index) => (
+                <ProjectCard
+                  key={meta.repo}
+                  meta={meta}
+                  project={content.work.projects[index]}
+                  openLabel={content.work.open}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
 }
 
-type Project = (typeof projects)[number];
+type ProjectMeta = (typeof projectMeta)[number];
+type ProjectCopy = {
+  title: string;
+  type: string;
+  summary: string;
+  outcome: string;
+};
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({
+  meta,
+  project,
+  openLabel
+}: {
+  meta: ProjectMeta;
+  project: ProjectCopy;
+  openLabel: string;
+}) {
   const ref = useRef<HTMLAnchorElement>(null);
 
   function handlePointerMove(event: React.PointerEvent<HTMLAnchorElement>) {
@@ -42,73 +74,58 @@ function ProjectCard({ project }: { project: Project }) {
     const rect = card.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    const rotateY = ((x / rect.width) - 0.5) * 5;
-    const rotateX = ((y / rect.height) - 0.5) * -4;
     card.style.setProperty("--x", `${x}px`);
     card.style.setProperty("--y", `${y}px`);
-    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate3d(0,-4px,0)`;
-  }
-
-  function handlePointerLeave() {
-    if (ref.current) {
-      ref.current.style.transform = "rotateX(0deg) rotateY(0deg) translate3d(0,0,0)";
-    }
   }
 
   return (
     <a
       ref={ref}
-      href={project.repo}
+      href={meta.repo}
       target="_blank"
       rel="noreferrer"
-      data-cursor="Open"
+      data-cursor={openLabel}
       onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
-      className="reveal panel group relative grid overflow-hidden rounded-[2rem] p-6 transition-transform duration-300 md:grid-cols-[0.55fr_1.45fr] md:p-8"
+      className="reveal group relative block overflow-hidden rounded-[1.6rem] border border-[var(--line)] bg-white/[0.018] p-6 transition duration-300 hover:border-white/22 md:p-8"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100"
         style={{
           background:
-            "radial-gradient(540px circle at var(--x,50%) var(--y,50%), rgba(244,241,234,0.12), transparent 42%)"
+            "radial-gradient(420px circle at var(--x,50%) var(--y,50%), rgba(241,239,233,0.08), transparent 44%)"
         }}
       />
-      <div className="relative z-10 flex min-h-52 flex-col justify-between border-b border-[var(--line)] pb-6 md:border-b-0 md:border-r md:pb-0 md:pr-8">
+      <div className="relative z-10 grid gap-8 md:grid-cols-[0.25fr_1fr_auto] md:items-start">
         <div>
-          <p className="text-sm uppercase text-white/36">{project.index}</p>
-          <p className="mt-4 text-sm text-[var(--quiet)]">{project.type}</p>
+          <p className="text-sm text-white/34">{meta.index}</p>
+          <p className="mt-3 text-sm text-white/34">{meta.year}</p>
         </div>
-        <p className="text-sm text-white/42">{project.year}</p>
-      </div>
-
-      <div className="relative z-10 pt-6 md:pl-8 md:pt-0">
-        <div className="flex items-start justify-between gap-6">
-          <div>
-            <h3 className="text-balance text-4xl font-black leading-none text-white md:text-6xl">
-              {project.title}
-            </h3>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-[var(--muted)]">
-              {project.summary}
-            </p>
+        <div>
+          <p className="text-sm text-white/42">{project.type}</p>
+          <h3 className="mt-3 text-4xl font-normal tracking-[-0.03em] text-white md:text-6xl">
+            {project.title}
+          </h3>
+          <p className="mt-6 max-w-3xl text-base leading-8 text-[var(--muted)]">
+            {project.summary}
+          </p>
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-white/46">
+            {project.outcome}
+          </p>
+          <div className="mt-8 flex flex-wrap gap-2">
+            {meta.stack.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-[var(--line-soft)] px-3 py-1 text-xs text-white/42"
+              >
+                {item}
+              </span>
+            ))}
           </div>
-          <span className="grid size-12 shrink-0 place-items-center rounded-full border border-[var(--line)] bg-white/[0.035] text-white/64 transition group-hover:bg-white group-hover:text-black">
-            <ArrowUpRight size={20} />
-          </span>
         </div>
-        <p className="mt-6 border-l border-[var(--line)] pl-5 text-sm leading-7 text-white/50">
-          {project.outcome}
-        </p>
-        <div className="mt-8 flex flex-wrap gap-2">
-          {project.stack.map((item) => (
-            <span
-              key={item}
-              className="rounded-full border border-[var(--line)] bg-white/[0.028] px-3 py-1.5 text-xs text-white/52"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
+        <span className="grid size-10 place-items-center rounded-full border border-[var(--line)] text-white/42 transition group-hover:border-white/28 group-hover:text-white">
+          <ArrowUpRight size={17} />
+        </span>
       </div>
     </a>
   );

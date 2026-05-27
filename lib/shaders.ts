@@ -1,75 +1,82 @@
-export const ambientVertexShader = `
+export const starVertexShader = `
   uniform float uTime;
   uniform vec2 uPointer;
-  varying vec2 vUv;
-  varying float vElevation;
+  uniform float uScroll;
+  attribute float aSize;
+  attribute float aDepth;
+  varying float vAlpha;
+  varying float vDepth;
 
-  // A dense plane becomes a quiet atmospheric surface. The motion is slow and
-  // interpolated so it reads as cinematic lighting instead of a loud 3D effect.
+  // The star layer is intentionally simple: each point drifts at a different
+  // depth, with the camera-like scroll value pushing the field very slowly.
   void main() {
-    vUv = uv;
     vec3 pos = position;
-    float pointerDistance = distance(uv, uPointer);
-    float waveA = sin(pos.x * 2.8 + uTime * 0.34);
-    float waveB = cos(pos.y * 3.6 - uTime * 0.28);
-    float waveC = sin((pos.x + pos.y) * 4.2 + uTime * 0.18);
-    vElevation = (waveA + waveB + waveC) * 0.08;
-    pos.z += vElevation + smoothstep(0.55, 0.0, pointerDistance) * 0.18;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+    float depthMotion = aDepth * 0.28;
+    pos.z += uScroll * depthMotion;
+    pos.x += (uPointer.x - 0.5) * aDepth * 0.18;
+    pos.y += (uPointer.y - 0.5) * aDepth * 0.12;
+    pos.x += sin(uTime * 0.08 + position.z * 0.3) * 0.025 * aDepth;
+    pos.y += cos(uTime * 0.07 + position.x * 0.24) * 0.018 * aDepth;
+
+    vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+    gl_PointSize = aSize * (165.0 / -mvPosition.z);
+    gl_Position = projectionMatrix * mvPosition;
+    vDepth = aDepth;
+    vAlpha = smoothstep(18.0, 2.0, abs(position.z));
   }
 `;
 
-export const ambientFragmentShader = `
-  uniform float uTime;
-  uniform vec3 uInk;
-  uniform vec3 uMist;
-  uniform vec3 uWarm;
-  varying vec2 vUv;
-  varying float vElevation;
-
-  float grain(vec2 p) {
-    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
-  }
+export const starFragmentShader = `
+  varying float vAlpha;
+  varying float vDepth;
 
   void main() {
-    float leftGlow = smoothstep(0.9, 0.0, distance(vUv, vec2(0.22, 0.48)));
-    float rightGlow = smoothstep(0.72, 0.0, distance(vUv, vec2(0.74, 0.35)));
-    float pulse = 0.5 + 0.5 * sin(uTime * 0.22 + vUv.x * 2.0);
-    vec3 color = uInk;
-    color = mix(color, uWarm, leftGlow * 0.32);
-    color = mix(color, uMist, rightGlow * 0.24);
-    color += vElevation * 0.18;
-    color += grain(vUv * 360.0 + uTime * 0.12) * 0.018;
-    float alpha = 0.42 + pulse * 0.06;
+    vec2 center = gl_PointCoord - vec2(0.5);
+    float d = length(center);
+    float dot = smoothstep(0.5, 0.0, d);
+    float core = smoothstep(0.16, 0.0, d);
+    vec3 color = mix(vec3(0.52, 0.56, 0.62), vec3(0.94, 0.91, 0.84), vDepth);
+    float alpha = (dot * 0.34 + core * 0.36) * vAlpha;
     gl_FragColor = vec4(color, alpha);
   }
 `;
 
-export const particleVertexShader = `
+export const veilVertexShader = `
   uniform float uTime;
   uniform vec2 uPointer;
-  attribute float aSize;
-  varying float vAlpha;
+  varying vec2 vUv;
+  varying float vWave;
 
   void main() {
+    vUv = uv;
     vec3 pos = position;
-    pos.x += sin(uTime * 0.2 + position.y * 0.4) * 0.045 + (uPointer.x - 0.5) * 0.12;
-    pos.y += cos(uTime * 0.18 + position.x * 0.36) * 0.035 + (uPointer.y - 0.5) * 0.08;
-    vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-    gl_PointSize = aSize * (180.0 / -mvPosition.z);
-    gl_Position = projectionMatrix * mvPosition;
-    vAlpha = smoothstep(7.5, 1.2, length(position));
+    float wave = sin(pos.x * 2.1 + uTime * 0.09) + cos(pos.y * 2.8 - uTime * 0.07);
+    float pointer = smoothstep(0.62, 0.0, distance(uv, uPointer));
+    vWave = wave * 0.5 + pointer;
+    pos.z += wave * 0.025 + pointer * 0.035;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
   }
 `;
 
-export const particleFragmentShader = `
-  varying float vAlpha;
+export const veilFragmentShader = `
+  uniform float uTime;
+  varying vec2 vUv;
+  varying float vWave;
+
+  float random(vec2 st) {
+    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
+  }
 
   void main() {
-    vec2 c = gl_PointCoord - vec2(0.5);
-    float d = length(c);
-    float glow = smoothstep(0.5, 0.0, d);
-    vec3 color = vec3(0.84, 0.80, 0.68);
-    gl_FragColor = vec4(color, glow * vAlpha * 0.42);
+    float left = smoothstep(0.8, 0.0, distance(vUv, vec2(0.18, 0.44)));
+    float right = smoothstep(0.84, 0.0, distance(vUv, vec2(0.84, 0.22)));
+    float horizon = smoothstep(0.0, 0.9, vUv.y) * smoothstep(1.0, 0.1, vUv.y);
+    float grain = random(vUv * 240.0 + uTime * 0.02) * 0.018;
+    vec3 color = vec3(0.035, 0.035, 0.038);
+    color += left * vec3(0.11, 0.10, 0.085);
+    color += right * vec3(0.055, 0.065, 0.08);
+    color += vWave * 0.012 + grain;
+    float alpha = 0.34 * horizon;
+    gl_FragColor = vec4(color, alpha);
   }
 `;

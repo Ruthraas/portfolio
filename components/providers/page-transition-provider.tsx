@@ -26,11 +26,10 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
 
       gsap.fromTo(
         "[data-page-root]",
-        { autoAlpha: 0, y: 18, filter: "blur(12px)" },
+        { autoAlpha: 0, y: 12 },
         {
           autoAlpha: 1,
           y: 0,
-          filter: "blur(0px)",
           duration: 1.05,
           ease: "power4.out",
           delay: 0.42

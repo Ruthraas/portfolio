@@ -16,126 +16,76 @@ import {
 
 export const profile = {
   name: "Arthur Pedroso de Almeida",
-  displayName: "Arthur Almeida",
   alias: "Ruhtra",
-  heroName: "Arthur",
-  role: "Creative Developer",
   title: "Full-Stack Developer | Embedded Systems | React & Node.js",
-  location: "Sao Paulo, Brazil",
   github: "https://github.com/Ruthraas",
   linkedin: "https://linkedin.com/in/Arthurdevin",
   email: "arthur.pedroso.dev@gmail.com",
-  resume: "/resume/arthur-almeida-resume.pdf",
-  statement:
-    "Crafting immersive digital experiences through motion, interaction and systems.",
-  biography:
-    "Frontend-focused full-stack developer building modern interfaces, REST APIs, dashboards, support systems and Discord automation with a strong eye for usability, performance and visual quality."
+  resume: "/resume/arthur-almeida-resume.pdf"
 };
 
-export const navigation = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contact", href: "#contact" }
-];
+export const navSections = [
+  { id: "work", key: "work" },
+  { id: "about", key: "about" },
+  { id: "stack", key: "stack" },
+  { id: "contact", key: "contact" }
+] as const;
 
-export const heroSignals = [
-  { label: "Interface", value: "React / Next.js" },
-  { label: "Systems", value: "Node / APIs" },
-  { label: "Motion", value: "GSAP / GLSL" }
-];
-
-export const projects = [
+export const projectMeta = [
   {
-    title: "FastFeet API",
     repo: "https://github.com/Ruthraas/Nestjs-api-fastfeet",
     year: "2026",
-    type: "Logistics API",
-    summary:
-      "A NestJS backend for delivery operations with role-based authentication, order lifecycle, nearby deliveries, notifications and photo proof.",
-    outcome:
-      "A clean domain-driven transport workflow shaped for real operational roles.",
-    stack: ["NestJS", "TypeScript", "Prisma", "JWT", "REST API", "Multer", "Jest"],
-    index: "01"
+    index: "01",
+    stack: ["NestJS", "TypeScript", "Prisma", "JWT", "REST API", "Jest"]
   },
   {
-    title: "Help Desk",
     repo: "https://github.com/Ruthraas/Help_Desk",
     year: "2026",
-    type: "Support System",
-    summary:
-      "A full-stack ticket platform with Express API, JWT authentication, role-based screens and a React/Vite/Tailwind interface.",
-    outcome:
-      "Support flows designed around clarity: tickets, status, roles and responsive operations.",
-    stack: ["React", "Vite", "TailwindCSS", "Node.js", "Express", "Prisma", "PostgreSQL"],
-    index: "02"
+    index: "02",
+    stack: ["React", "Vite", "TailwindCSS", "Node.js", "Express", "PostgreSQL"]
   },
   {
-    title: "Archteturis",
     repo: "https://github.com/Ruthraas/Archteturis",
     year: "2026",
-    type: "Bot Framework",
-    summary:
-      "A TypeScript framework for Discord.js v14 bots with modular slash commands and package-ready developer experience.",
-    outcome:
-      "A reusable architecture that turns repeated Discord bot boilerplate into a focused framework.",
-    stack: ["TypeScript", "Discord.js", "Node.js", "TSX", "Framework Design", "DX"],
-    index: "03"
-  }
-];
-
-export const aboutBlocks = [
-  {
-    label: "Design sense",
-    body:
-      "Strong focus on UI/UX, visual hierarchy, responsive rhythm and interface details that make a product feel more serious."
-  },
-  {
-    label: "Engineering",
-    body:
-      "Practical experience connecting frontend and backend, shaping APIs, authentication, dashboards and system workflows."
-  },
-  {
-    label: "Formation",
-    body:
-      "Rocketseat ONE formation with continuous study around React, Next.js, Node.js, TypeScript and modern delivery habits."
+    index: "03",
+    stack: ["TypeScript", "Discord.js", "Node.js", "TSX", "Framework", "DX"]
   }
 ];
 
 export const stackGroups = [
   {
-    label: "Frontend",
+    key: "frontend",
     icon: Monitor,
-    items: ["React", "Next.js 15", "TypeScript", "TailwindCSS", "HTML5", "CSS3"]
+    items: ["React", "Next.js 15", "TypeScript", "TailwindCSS"]
   },
   {
-    label: "Motion",
+    key: "motion",
     icon: Sparkles,
-    items: ["GSAP", "ScrollTrigger", "Framer Motion", "Lenis", "GLSL"]
+    items: ["GSAP", "Lenis", "Framer Motion", "R3F"]
   },
   {
-    label: "3D Layer",
+    key: "space",
     icon: Orbit,
-    items: ["React Three Fiber", "Three.js", "Shaders", "Bloom", "Depth Fog"]
+    items: ["Three.js", "Particles", "Depth", "GLSL"]
   },
   {
-    label: "Backend",
+    key: "backend",
     icon: Server,
-    items: ["Node.js", "NestJS", "Express", "REST APIs", "JWT"]
+    items: ["Node.js", "NestJS", "Express", "REST APIs"]
   },
   {
-    label: "Data",
+    key: "data",
     icon: Database,
     items: ["Prisma", "PostgreSQL", "SQLite", "Knex.js"]
   },
   {
-    label: "Systems",
+    key: "systems",
     icon: Cpu,
-    items: ["Embedded Systems", "Linux", "Git", "Discord.js", "Postman"]
+    items: ["Embedded Systems", "Linux", "Git", "Discord.js"]
   }
 ];
 
-export const floatingStack = [
+export const orbitStack = [
   { name: "Next.js", icon: Layers },
   { name: "React", icon: Blocks },
   { name: "TypeScript", icon: SquareTerminal },

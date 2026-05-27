@@ -29,16 +29,14 @@ export function useGsapReveal<T extends HTMLElement>(
           target,
           {
             autoAlpha: 0,
-            y: 48,
-            filter: "blur(14px)"
+            y: 28
           },
           {
             autoAlpha: 1,
             y: 0,
-            filter: "blur(0px)",
-            duration: 1.0,
-            delay: index * 0.045,
-            ease: "power4.out",
+            duration: 0.95,
+            delay: index * 0.035,
+            ease: "power3.out",
             scrollTrigger: {
               trigger: target,
               start: options.start ?? "top 82%",
