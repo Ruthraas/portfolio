@@ -24,7 +24,7 @@ export function ProjectCard({
       target="_blank"
       rel="noreferrer"
       aria-label={`${openLabel}: ${meta.name}`}
-      className="reveal group flex min-h-[18.5rem] flex-col justify-between rounded-[1.25rem] border border-white/12 bg-[#070707]/90 p-5 shadow-[0_1.5rem_5rem_rgba(0,0,0,0.28)] transition duration-300 hover:-translate-y-1 hover:border-white/26 hover:bg-white/[0.045]"
+      className="reveal group flex min-h-[18.5rem] flex-col justify-between rounded-[1.25rem] border border-white/12 bg-[#070707]/90 p-5 shadow-[0_1.5rem_5rem_rgba(0,0,0,0.28)] transition duration-300 hover:-translate-y-1 hover:border-white/48 hover:bg-[#111] hover:shadow-[0_1.75rem_5rem_rgba(255,255,255,0.07)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
     >
       <div>
         <div className="flex items-start justify-between gap-3">
@@ -37,7 +37,7 @@ export function ProjectCard({
               </h3>
             </div>
           </div>
-          <span className="grid size-8 shrink-0 place-items-center rounded-full border border-[var(--line)] text-white/42 transition group-hover:border-white/28 group-hover:text-white">
+          <span className="grid size-8 shrink-0 place-items-center rounded-full border border-[var(--line)] text-white/42 transition group-hover:border-white/50 group-hover:bg-white group-hover:text-black">
             <ArrowUpRight size={15} />
           </span>
         </div>

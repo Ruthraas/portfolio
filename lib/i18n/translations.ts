@@ -34,7 +34,7 @@ export const translations = {
       role: "Creative Developer",
       line: "Desenvolvedor full-stack, técnico em eletrônica e mecatrônica, criando produtos digitais com precisão visual e base técnica.",
       location: "São Paulo, Brasil",
-      scroll: "Role",
+      scroll: "Scroll",
       cta: "Ver projetos",
       resume: "Currículo",
       github: "GitHub"

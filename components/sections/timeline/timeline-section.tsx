@@ -41,19 +41,24 @@ export function TimelineSection() {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px)", () => {
-        gsap.set(cards, { opacity: 0.84, scale: 0.96 });
+        gsap.set(cards, {
+          opacity: 0.9,
+          scale: 0.96,
+          y: (_index, target: HTMLElement) =>
+            target.dataset.side === "top" ? -176 : 176
+        });
         gsap.set(line, { scaleX: 0.04, transformOrigin: "left center" });
         gsap.set(arrow, { autoAlpha: 0.38, x: -12, scale: 0.88 });
 
         const getDistance = () =>
-          Math.max(0, track.scrollWidth - window.innerWidth + window.innerWidth * 0.16);
+          Math.max(0, track.scrollWidth - window.innerWidth + window.innerWidth * 0.08);
 
         const timeline = gsap.timeline({
           scrollTrigger: {
             trigger: stage,
             start: "top top",
-            end: () => `+=${getDistance() + window.innerHeight * 0.95}`,
-            scrub: 0.9,
+            end: () => `+=${getDistance() + window.innerHeight * 0.36}`,
+            scrub: 0.72,
             pin: true,
             pinReparent: true,
             anticipatePin: 1,
@@ -64,7 +69,18 @@ export function TimelineSection() {
         timeline
           .to(track, { x: () => -getDistance(), ease: "none" }, 0)
           .to(line, { scaleX: 1, ease: "none" }, 0)
-          .to(cards, { opacity: 1, scale: 1, stagger: 0.075, ease: "none" }, 0.04)
+          .to(
+            cards,
+            {
+              opacity: 1,
+              scale: 1,
+              y: (_index, target: HTMLElement) =>
+                target.dataset.side === "top" ? -190 : 190,
+              stagger: 0.075,
+              ease: "none"
+            },
+            0.04
+          )
           .to(arrow, { autoAlpha: 1, x: 0, scale: 1, ease: "none" }, 0.55);
 
         return () => {
@@ -129,7 +145,7 @@ export function TimelineSection() {
 
         <div
           ref={trackRef}
-          className="no-scrollbar relative z-10 flex h-[42rem] gap-5 overflow-x-auto px-4 py-24 md:h-[100svh] md:w-max md:items-center md:gap-8 md:overflow-visible md:px-[max(7rem,calc((100vw-76rem)/2+7rem))]"
+          className="no-scrollbar relative z-10 flex h-[42rem] gap-5 overflow-x-auto px-4 py-24 md:h-[100svh] md:w-max md:items-center md:gap-7 md:overflow-visible md:px-[max(7rem,calc((100vw-76rem)/2+7rem))]"
         >
           {timelineItems.map((item, index) => (
             <TimelineCard
@@ -163,11 +179,32 @@ function TimelineCard({
   return (
     <article
       data-timeline-card
+      data-side={item.side}
       className={cn(
-        "group relative flex h-[24rem] w-[18.5rem] shrink-0 flex-col justify-between rounded-[1.35rem] border border-white/12 bg-[#060606]/88 p-5 shadow-[0_1.5rem_5rem_rgba(0,0,0,0.32)] backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:border-white/28 hover:bg-white/[0.035] sm:w-[21rem] md:h-[26rem] md:w-[25rem]",
-        isTop ? "md:-translate-y-24" : "md:translate-y-24"
+        "group relative flex h-[24rem] w-[18.5rem] shrink-0 flex-col justify-between rounded-[1.35rem] border border-white/14 bg-[#070707]/92 p-5 shadow-[0_1.5rem_5rem_rgba(0,0,0,0.32)] backdrop-blur-sm transition duration-300 hover:border-white/48 hover:bg-[#111] hover:shadow-[0_1.75rem_5rem_rgba(255,255,255,0.07)] sm:w-[21rem] md:h-[21.5rem] md:w-[23rem]",
+        isTop ? "md:-translate-y-44" : "md:translate-y-44"
       )}
     >
+      <span
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute left-1/2 hidden -translate-x-1/2 md:block",
+          isTop ? "-bottom-[2.3rem]" : "-top-[2.3rem]"
+        )}
+      >
+        <span
+          className={cn(
+            "mx-auto block h-9 w-px",
+            isTop
+              ? "bg-gradient-to-b from-white/32 to-white/5"
+              : "bg-gradient-to-t from-white/32 to-white/5"
+          )}
+        />
+        <span className="absolute left-1/2 top-1/2 grid size-5 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/24 bg-[#030303] shadow-[0_0_2rem_rgba(255,255,255,0.08)]">
+          <span className="size-1.5 rounded-full bg-white/72" />
+        </span>
+      </span>
+
       <div>
         <div className="flex items-start justify-between gap-4">
           <span className="text-[clamp(3.5rem,8vw,5.5rem)] font-black leading-none tracking-[-0.08em] text-white/[0.075]">

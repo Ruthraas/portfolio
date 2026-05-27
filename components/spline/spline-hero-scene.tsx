@@ -7,6 +7,8 @@ const SPLINE_SCENE_URL =
   "https://prod.spline.design/J-J0m4XCo5t8mmMq/scene.splinecode";
 
 const hiddenSceneTextPattern = /^Text(?:\s\d+)?$/;
+const hiddenDecorativePattern =
+  /^(Group 9[89]\.png(?:\s\d+)?|Group 100\.png|Group 88\.png|Group [34])$/;
 type SceneObject = ReturnType<Application["getAllObjects"]>[number] & {
   parentUuid?: string;
 };
@@ -42,7 +44,11 @@ export function SplineHeroScene() {
         const isTickTockLetter =
           Boolean(tickTockGroup?.uuid) && object.parentUuid === tickTockGroup?.uuid;
 
-        if (hiddenSceneTextPattern.test(object.name) || isTickTockLetter) {
+        if (
+          hiddenSceneTextPattern.test(object.name) ||
+          hiddenDecorativePattern.test(object.name) ||
+          isTickTockLetter
+        ) {
           object.hide();
         }
       });

@@ -2,7 +2,7 @@
   "name": "arthur-ruhtra-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Minimal cinematic developer portfolio for Arthur Almeida | Ruhtra.",
+  "description": "Minimal cinematic developer portfolio for Arthur Pedroso de Almeida | Ruhtra.",
   "type": "module",
   "scripts": {
     "dev": "next dev",

@@ -108,9 +108,10 @@ textarea {
     mask-image: radial-gradient(circle at center, black, transparent 70%);
   }
 
-  .reveal {
-    opacity: 0;
-    transform: translate3d(0, 28px, 0);
+  .reveal,
+  [data-reveal] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 
   .input-shell {

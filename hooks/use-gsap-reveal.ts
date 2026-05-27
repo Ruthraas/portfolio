@@ -25,25 +25,49 @@ export function useGsapReveal<T extends HTMLElement>(
       );
 
       targets.forEach((target, index) => {
-        gsap.fromTo(
-          target,
-          {
-            autoAlpha: 0,
-            y: 28
-          },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.95,
-            delay: index * 0.035,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: target,
-              start: options.start ?? "top 82%",
-              scrub: options.scrub ?? false
+        if (options.scrub) {
+          gsap.fromTo(
+            target,
+            {
+              autoAlpha: 0,
+              y: 28
+            },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.95,
+              delay: index * 0.035,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: target,
+                start: options.start ?? "top 82%",
+                scrub: options.scrub
+              }
             }
+          );
+
+          return;
+        }
+
+        ScrollTrigger.create({
+          trigger: target,
+          start: options.start ?? "top 84%",
+          once: true,
+          onEnter: () => {
+            gsap.fromTo(
+              target,
+              { autoAlpha: 0, y: 22 },
+              {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.8,
+                delay: index * 0.025,
+                ease: "power3.out",
+                overwrite: "auto"
+              }
+            );
           }
-        );
+        });
       });
     }, ref);
 

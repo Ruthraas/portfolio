@@ -50,12 +50,12 @@ export function ActionRail() {
             rel={action.external ? "noreferrer" : undefined}
             download={"download" in action && action.download ? true : undefined}
             aria-label={copy.title}
-            className="group relative grid size-11 place-items-center rounded-full border border-white/10 bg-black/58 text-white/48 shadow-[0_1rem_3rem_rgba(0,0,0,0.3)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-white/28 hover:bg-white hover:text-black"
+            className="group relative grid size-11 place-items-center rounded-full border border-white/12 bg-black/68 text-white/62 shadow-[0_1rem_3rem_rgba(0,0,0,0.36)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-white/70 hover:bg-[#f1efe9] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
           >
             <Icon size={17} strokeWidth={1.8} />
-            <span className="pointer-events-none absolute left-[calc(100%+0.75rem)] top-1/2 w-max max-w-[15rem] -translate-y-1/2 rounded-2xl border border-white/10 bg-black/82 px-4 py-3 text-left text-white opacity-0 shadow-[0_1.25rem_4rem_rgba(0,0,0,0.38)] backdrop-blur-xl transition duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-              <span className="block text-xs font-semibold">{copy.title}</span>
-              <span className="mt-1 block text-[0.7rem] leading-4 text-white/48">
+            <span className="pointer-events-none absolute left-[calc(100%+0.85rem)] top-1/2 w-max max-w-[16rem] -translate-y-1/2 rounded-2xl border border-black/10 bg-[#f1efe9] px-4 py-3 text-left text-black opacity-0 shadow-[0_1.25rem_4rem_rgba(0,0,0,0.44)] transition duration-300 group-hover:translate-x-1 group-hover:opacity-100 group-focus-visible:translate-x-1 group-focus-visible:opacity-100">
+              <span className="block text-xs font-bold">{copy.title}</span>
+              <span className="mt-1 block text-[0.72rem] leading-4 text-black/58">
                 {copy.description}
               </span>
             </span>
