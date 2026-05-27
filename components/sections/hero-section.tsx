@@ -2,17 +2,16 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Code, Download } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { MagneticButton } from "@/components/ui/magnetic-button";
-import { profile, stats } from "@/lib/site-data";
-import { ease, revealVariants, staggerContainer } from "@/lib/motion";
+import { heroMetrics, profile } from "@/lib/site-data";
 
-const HeroScene = dynamic(
-  () => import("@/components/three/hero-scene").then((mod) => mod.HeroScene),
+const SplineStage = dynamic(
+  () => import("@/components/spline/spline-stage").then((mod) => mod.SplineStage),
   {
     ssr: false,
     loading: () => (
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(125,231,255,0.2),transparent_34%),#050505]" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,#050505,#0e0d0b_48%,#050505)]" />
     )
   }
 );
@@ -21,86 +20,74 @@ export function HeroSection() {
   return (
     <section
       id="top"
-      className="relative min-h-[100svh] overflow-hidden"
+      className="relative min-h-[96svh] overflow-hidden border-b border-[var(--line)]"
       aria-label="Hero"
     >
-      <HeroScene />
-      <div className="cinematic-grid pointer-events-none absolute inset-0 opacity-35" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#050505] to-transparent" />
+      <SplineStage />
 
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-        className="section-inner relative z-10 flex min-h-[100svh] flex-col justify-end pb-16 pt-32 md:pb-20"
-      >
-        <motion.p variants={revealVariants} className="eyebrow">
-          {profile.location}
-        </motion.p>
-
-        <motion.div variants={revealVariants} className="mt-6 max-w-5xl">
-          <h1 className="text-balance text-6xl font-black leading-[0.88] text-white sm:text-7xl md:text-8xl lg:text-9xl">
-            Arthur Almeida
-            <span className="block text-white/42">Ruhtra</span>
-          </h1>
-        </motion.div>
-
-        <motion.p
-          variants={revealVariants}
-          className="mt-7 max-w-2xl text-lg leading-8 text-white/70 md:text-xl"
-        >
-          {profile.title}. I build sharp interfaces, useful APIs and immersive
-          digital systems with cinematic interaction and serious engineering.
-        </motion.p>
-
+      <div className="page-shell relative z-10 grid min-h-[96svh] grid-rows-[1fr_auto] pt-28">
         <motion.div
-          variants={revealVariants}
-          className="mt-9 flex flex-col gap-3 sm:flex-row"
+          initial={{ opacity: 0, y: 34, filter: "blur(14px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="flex items-end pb-10"
         >
-          <MagneticButton href="#projects">
-            View projects <ArrowDown size={18} />
-          </MagneticButton>
-          <MagneticButton href={profile.resume} download variant="ghost">
-            Resume <Download size={18} />
-          </MagneticButton>
-          <MagneticButton
-            href={profile.github}
-            target="_blank"
-            rel="noreferrer"
-            variant="ghost"
-          >
-            GitHub <Code size={18} />
-          </MagneticButton>
+          <div className="max-w-5xl">
+            <div className="mb-6 flex flex-wrap items-center gap-3">
+              <span className="border border-[var(--line)] bg-black/42 px-3 py-2 text-xs font-black uppercase text-[var(--acid)] backdrop-blur-xl">
+                {profile.location}
+              </span>
+              <span className="border border-[var(--line)] bg-black/42 px-3 py-2 text-xs font-black uppercase text-white/58 backdrop-blur-xl">
+                Spline / GSAP / Next.js 15
+              </span>
+            </div>
+
+            <h1 className="text-balance text-6xl font-black leading-[0.86] text-[var(--foreground)] sm:text-7xl md:text-8xl lg:text-9xl">
+              Arthur
+              <span className="display-serif block text-white/58">Ruhtra</span>
+            </h1>
+
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/67 md:text-xl">
+              {profile.title}. {profile.thesis}
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <MagneticButton href="#work">
+                See the work <ArrowDown size={18} />
+              </MagneticButton>
+              <MagneticButton href={profile.resume} download variant="outline">
+                Resume <Download size={18} />
+              </MagneticButton>
+              <MagneticButton
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                variant="outline"
+              >
+                GitHub <ArrowUpRight size={18} />
+              </MagneticButton>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
-          variants={revealVariants}
-          className="mt-16 grid max-w-4xl gap-3 sm:grid-cols-3"
+          id="index"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-6 grid border border-[var(--line)] bg-black/42 backdrop-blur-2xl sm:grid-cols-3"
         >
-          {stats.map((stat) => (
+          {heroMetrics.map((metric) => (
             <div
-              key={stat.label}
-              className="glass-panel rounded-2xl p-4"
-              style={{ animation: "float-panel 5.5s ease-in-out infinite" }}
+              key={metric.label}
+              className="border-b border-[var(--line)] p-5 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
             >
-              <p className="text-xs uppercase text-white/42">{stat.label}</p>
-              <p className="mt-2 text-lg font-semibold text-white">{stat.value}</p>
+              <p className="text-xs font-black uppercase text-white/38">{metric.label}</p>
+              <p className="mt-2 text-lg font-black text-white">{metric.value}</p>
             </div>
           ))}
         </motion.div>
-      </motion.div>
-
-      <motion.a
-        href="#about"
-        data-cursor="Scroll"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6, ease: ease.cinematic }}
-        className="absolute bottom-6 right-6 z-20 hidden items-center gap-3 rounded-full border border-white/12 bg-white/7 px-4 py-3 text-xs uppercase text-white/58 backdrop-blur-xl md:flex"
-      >
-        Keep scrolling
-        <ArrowUpRight size={16} />
-      </motion.a>
+      </div>
     </section>
   );
 }

@@ -21,7 +21,7 @@ export function useGsapReveal<T extends HTMLElement>(
 
     const ctx = gsap.context(() => {
       const targets = gsap.utils.toArray<HTMLElement>(
-        options.selector ?? "[data-reveal]"
+        options.selector ?? ".motion-reveal, [data-reveal]"
       );
 
       targets.forEach((target, index) => {
@@ -30,13 +30,13 @@ export function useGsapReveal<T extends HTMLElement>(
           {
             autoAlpha: 0,
             y: 48,
-            filter: "blur(16px)"
+            filter: "blur(14px)"
           },
           {
             autoAlpha: 1,
             y: 0,
             filter: "blur(0px)",
-            duration: 1.05,
+            duration: 1.0,
             delay: index * 0.045,
             ease: "power4.out",
             scrollTrigger: {

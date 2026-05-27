@@ -5,12 +5,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   experimental: {
-    optimizePackageImports: [
-      "lucide-react",
-      "framer-motion",
-      "@react-three/drei",
-      "@react-three/postprocessing"
-    ]
+    optimizePackageImports: ["lucide-react", "framer-motion", "@splinetool/react-spline"]
   }
 };
 

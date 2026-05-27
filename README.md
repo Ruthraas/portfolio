@@ -1,21 +1,28 @@
 # Arthur Almeida | Ruhtra Portfolio
 
-Cinematic premium developer portfolio built with Next.js 15, React, TypeScript, TailwindCSS, GSAP, Lenis, Barba.js, Framer Motion, React Three Fiber, Three.js and custom GLSL shaders.
+Sophisticated developer portfolio built with Next.js 15, React, TypeScript, TailwindCSS, Spline, GSAP, ScrollTrigger, Lenis, Barba.js and Framer Motion.
 
-## Highlights
+## Direction
 
-- Interactive Three.js hero with particles, shader distortion, bloom, chromatic aberration and depth of field.
-- Lenis smooth scrolling integrated with GSAP ScrollTrigger.
-- Horizontal pinned project section with 3D hover cards and mouse-follow lighting.
-- Barba.js transition layer prepared for future case-study routes.
-- Responsive dark premium UI with glassmorphism, cinematic grain, custom cursor and magnetic buttons.
-- Local downloadable resume generated from Arthur's resume information.
+This version is a full visual reset: darker, more editorial, more restrained and more premium. Spline owns the full-bleed 3D hero, while GSAP/ScrollTrigger handles scroll choreography and Framer Motion handles tactile interface states.
 
-## Projects Featured
+## Featured Projects
 
 - [FastFeet API](https://github.com/Ruthraas/Nestjs-api-fastfeet)
 - [Help Desk](https://github.com/Ruthraas/Help_Desk)
 - [Archteturis](https://github.com/Ruthraas/Archteturis)
+
+## Stack
+
+- Next.js 15 App Router
+- React 19
+- TypeScript
+- TailwindCSS v4
+- Spline
+- GSAP + ScrollTrigger
+- Lenis smooth scroll
+- Barba.js transition system
+- Framer Motion
 
 ## Getting Started
 
@@ -32,13 +39,14 @@ Open `http://localhost:3000`.
 npm run lint
 npm run typecheck
 npm run build
+npm audit --omit=dev
 ```
 
-## Architecture
+## Structure
 
-- `app/`: Next.js App Router pages, metadata and route handlers.
-- `components/sections/`: page sections and scroll experiences.
-- `components/three/`: React Three Fiber scene and post-processing.
-- `components/providers/`: Lenis and Barba integration.
-- `lib/shaders.ts`: GLSL shader programs with comments.
-- `lib/site-data.ts`: content source of truth.
+- `app/`: App Router pages, layout, styles and contact route.
+- `components/spline/`: Spline stage integration.
+- `components/sections/`: editorial portfolio sections.
+- `components/providers/`: Lenis and Barba motion infrastructure.
+- `lib/site-data.ts`: content and project data source of truth.
+- `public/resume/`: downloadable resume in HTML and PDF.

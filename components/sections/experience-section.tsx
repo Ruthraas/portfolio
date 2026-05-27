@@ -3,39 +3,45 @@
 import { useRef } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useGsapReveal } from "@/hooks/use-gsap-reveal";
-import { experience } from "@/lib/site-data";
+import { motionStack } from "@/lib/site-data";
 
 export function ExperienceSection() {
   const ref = useRef<HTMLElement>(null);
   useGsapReveal(ref);
 
   return (
-    <section ref={ref} className="section-pad relative overflow-hidden">
-      <div className="section-inner grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-        <div data-reveal>
+    <section ref={ref} className="section-space border-b border-[var(--line)]">
+      <div className="page-shell grid gap-12 lg:grid-cols-[1fr_1.1fr]">
+        <div className="motion-reveal">
           <SectionHeading
-            eyebrow="Practice"
-            title="From interface polish to backend structure."
-            description="The portfolio includes the resume content as a sharper narrative: frontend, APIs, dashboards, Discord bots and strong project organization."
+            kicker="Motion direction"
+            title="Spline in the foreground, GSAP as the director."
+            description="This version uses Spline as the premium 3D artifact and keeps the remaining animation system more controlled, heavy and editorial."
           />
         </div>
 
-        <div className="relative">
-          <div className="absolute bottom-0 left-5 top-0 w-px bg-gradient-to-b from-transparent via-white/18 to-transparent" />
-          <div className="space-y-5">
-            {experience.map((item, index) => (
-              <div key={item.title} data-reveal className="relative pl-12">
-                <div className="absolute left-[13px] top-2 grid size-4 place-items-center rounded-full bg-black">
-                  <span className="size-2 rounded-full bg-[var(--lime)] shadow-[0_0_18px_var(--lime)]" />
+        <div className="grid gap-4">
+          {motionStack.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <article
+                key={item.title}
+                className="motion-reveal rule-box rounded-[8px] p-6"
+              >
+                <div className="flex items-start justify-between gap-6">
+                  <div className="grid size-12 place-items-center border border-[var(--line)] bg-white/[0.035] text-[var(--acid)]">
+                    <Icon size={20} />
+                  </div>
+                  <p className="display-serif text-5xl leading-none text-white/12">
+                    0{index + 1}
+                  </p>
                 </div>
-                <div className="glass-panel rounded-3xl p-6">
-                  <p className="text-sm text-white/42">0{index + 1}</p>
-                  <h3 className="mt-2 text-2xl font-black text-white">{item.title}</h3>
-                  <p className="mt-4 text-base leading-8 text-white/58">{item.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+                <h3 className="mt-8 text-3xl font-black text-white">{item.title}</h3>
+                <p className="mt-4 text-base leading-8 text-white/58">{item.body}</p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

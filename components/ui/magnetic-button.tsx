@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 type SharedProps = {
   children: ReactNode;
   className?: string;
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "outline";
 };
 
 type MagneticButtonProps =
@@ -22,25 +22,26 @@ export function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLElement>(null);
 
-  const applyMagnet = (event: React.MouseEvent<HTMLElement>) => {
+  function applyMagnet(event: React.MouseEvent<HTMLElement>) {
     const element = ref.current;
     if (!element) return;
+
     const rect = element.getBoundingClientRect();
     const x = event.clientX - rect.left - rect.width / 2;
     const y = event.clientY - rect.top - rect.height / 2;
-    element.style.transform = `translate3d(${x * 0.18}px, ${y * 0.18}px, 0)`;
-  };
+    element.style.transform = `translate3d(${x * 0.14}px, ${y * 0.14}px, 0)`;
+  }
 
-  const resetMagnet = () => {
+  function resetMagnet() {
     if (ref.current) ref.current.style.transform = "translate3d(0, 0, 0)";
-  };
+  }
 
   const classes = cn(
-    "gpu-layer inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition duration-300",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--cyan)]",
+    "gpu-layer inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] px-5 text-sm font-bold uppercase transition duration-300",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--acid)]",
     variant === "primary"
-      ? "bg-white text-black shadow-[0_0_44px_rgba(200,255,100,0.18)] hover:bg-[var(--lime)]"
-      : "border border-white/14 bg-white/7 text-white/78 hover:border-white/26 hover:bg-white/12 hover:text-white",
+      ? "border border-[var(--acid)] bg-[var(--acid)] text-[#050505] shadow-[0_20px_70px_rgba(216,243,106,0.16)] hover:bg-[var(--foreground)]"
+      : "border border-[var(--line)] bg-white/[0.035] text-white/75 hover:border-white/28 hover:bg-white/[0.07] hover:text-white",
     className
   );
 
@@ -64,7 +65,12 @@ export function MagneticButton({
           anchorProps.onMouseLeave?.(event);
         }}
       >
-        {children}
+        <span
+          className="relative z-10 inline-flex items-center gap-2"
+          style={variant === "primary" ? { color: "#050505" } : undefined}
+        >
+          {children}
+        </span>
       </a>
     );
   }
@@ -86,7 +92,12 @@ export function MagneticButton({
         buttonProps.onMouseLeave?.(event);
       }}
     >
-      {children}
+      <span
+        className="relative z-10 inline-flex items-center gap-2"
+        style={variant === "primary" ? { color: "#050505" } : undefined}
+      >
+        {children}
+      </span>
     </button>
   );
 }
