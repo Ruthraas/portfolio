@@ -72,11 +72,6 @@ export function TimelineCard({ index, item, locale, position }: TimelineCardProp
 
         <p className="mt-5 text-sm leading-7 text-white/58">{copy.description}</p>
 
-        {item.credentialId ? (
-          <p className="mt-5 break-all rounded-xl border border-white/[0.07] bg-black/28 px-3 py-2 text-[0.65rem] uppercase tracking-[0.14em] text-white/34">
-            ID {item.credentialId}
-          </p>
-        ) : null}
       </div>
     </article>
   );
