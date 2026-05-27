@@ -25,7 +25,6 @@ export function ProjectCard({
       rel="noreferrer"
       aria-label={`${openLabel}: ${meta.name}`}
       data-scroll-reveal-3d
-      data-scroll-velocity
       className="reveal group flex min-h-[18.5rem] flex-col justify-between rounded-[1.25rem] border border-white/12 bg-[#070707]/90 p-5 shadow-[0_1.5rem_5rem_rgba(0,0,0,0.28)] transition duration-300 hover:-translate-y-1 hover:border-white/48 hover:bg-[#111] hover:shadow-[0_1.75rem_5rem_rgba(255,255,255,0.07)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
     >
       <div>

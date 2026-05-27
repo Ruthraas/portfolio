@@ -65,12 +65,7 @@ export function ScrollEffects() {
         );
       });
 
-      const velocityTargets = gsap.utils.toArray<HTMLElement>("[data-scroll-velocity]");
       const ctaTargets = gsap.utils.toArray<HTMLElement>("[data-cta-depth]");
-      const quickVelocity = velocityTargets.map((element) => ({
-        rotate: gsap.quickTo(element, "rotate", { duration: 0.42, ease: "power3.out" }),
-        y: gsap.quickTo(element, "y", { duration: 0.42, ease: "power3.out" })
-      }));
       const quickCta = ctaTargets.map((element) => ({
         rotateX: gsap.quickTo(element, "rotateX", { duration: 0.55, ease: "power3.out" }),
         rotateY: gsap.quickTo(element, "rotateY", { duration: 0.55, ease: "power3.out" }),
@@ -79,17 +74,11 @@ export function ScrollEffects() {
 
       const handleScroll = (event: Event) => {
         const { velocity, progress } = (event as PortfolioScrollEvent).detail;
-        const reactiveVelocity = clamp(-18, 18, velocity * 46);
-
-        quickVelocity.forEach((target, index) => {
-          target.y(clamp(-16, 16, reactiveVelocity * -0.42));
-          target.rotate(clamp(-1.7, 1.7, reactiveVelocity * 0.055 * (index % 2 ? -1 : 1)));
-        });
 
         quickCta.forEach((target) => {
-          target.rotateX(4 + clamp(-4, 4, velocity * -11));
-          target.rotateY(-5 + Math.sin(progress * Math.PI * 2) * 2.2);
-          target.y(clamp(-12, 12, velocity * -26));
+          target.rotateX(4 + clamp(-2.5, 2.5, velocity * -7));
+          target.rotateY(-5 + Math.sin(progress * Math.PI * 2) * 1.6);
+          target.y(clamp(-7, 7, velocity * -14));
         });
       };
 
