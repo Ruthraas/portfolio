@@ -25,7 +25,9 @@ export function AboutSection() {
             className="grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center"
           >
             <div data-reveal className="max-w-3xl">
-              <p className="kicker">{content.about.kicker}</p>
+              <p className="text-xs font-medium uppercase tracking-[0.28em] text-[var(--quiet)]">
+                {content.about.kicker}
+              </p>
               <h2 className="mt-5 text-balance text-[clamp(2.4rem,6vw,5rem)] font-normal leading-[0.98] tracking-[-0.04em] text-[var(--fg)]">
                 {content.about.title}
               </h2>

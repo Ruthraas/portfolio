@@ -9,24 +9,24 @@ export const translations = {
       about: "Sobre",
       timeline: "Trajetória",
       stack: "Stack",
-      contact: "Contato"
+      contact: "Contato",
     },
     actions: {
       label: "Ações rápidas",
       items: {
         linkedin: {
           title: "Acessar LinkedIn",
-          description: "Perfil profissional e trajetória."
+          description: "Perfil profissional e trajetória.",
         },
         projects: {
           title: "Acessar projetos",
-          description: "Repositórios principais no portfolio."
+          description: "Repositórios principais no portfolio.",
         },
         resume: {
           title: "Baixar currículo",
-          description: "Resumo profissional em PDF."
-        }
-      }
+          description: "Resumo profissional em PDF.",
+        },
+      },
     },
     hero: {
       eyebrow: "Arthur Pedroso de Almeida | São Paulo, Brasil",
@@ -37,35 +37,33 @@ export const translations = {
       scroll: "Scroll",
       cta: "Ver projetos",
       resume: "Currículo",
-      github: "GitHub"
+      github: "GitHub",
     },
     about: {
       kicker: "Sobre",
       title: "Sobre mim, sem pose e sem ruído.",
-      lead:
-        "Sou Arthur Pedroso de Almeida, também conhecido como Ruhtra. Minha trajetória mistura desenvolvimento full-stack, eletrônica, mecatrônica, suporte técnico e liderança técnica.",
-      body:
-        "Atuo com React, Next.js, TypeScript, Node.js, APIs REST, autenticação JWT, dashboards e sistemas de suporte. No LinkedIn, minha base aparece bem direta: tecnologia, operação, produto e vontade de construir com responsabilidade.",
+      lead: "Sou Arthur Pedroso de Almeida, também conhecido como Ruhtra. Minha trajetória mistura desenvolvimento full-stack, eletrônica, mecatrônica, suporte técnico e liderança técnica.",
+      body: "Atuo com React, Next.js, TypeScript, Node.js, APIs REST, autenticação JWT, dashboards e sistemas de suporte. No LinkedIn, minha base aparece bem direta: tecnologia, operação, produto e vontade de construir com responsabilidade.",
       blocks: [
         {
           title: "Full-stack",
-          text: "Interfaces modernas conectadas a APIs, autenticação, bancos de dados e fluxos reais."
+          text: "Interfaces modernas conectadas a APIs, autenticação, bancos de dados e fluxos reais.",
         },
         {
           title: "Técnico",
-          text: "Formação em eletrônica e mecatrônica, com experiência prática em suporte técnico."
+          text: "Formação em eletrônica e mecatrônica, com experiência prática em suporte técnico.",
         },
         {
           title: "Produto",
-          text: "Perfil empreendedor, CTO e sócio proprietário da Aurora Technology Society."
-        }
-      ]
+          text: "Perfil empreendedor, CTO e sócio proprietário da Aurora Technology Society.",
+        },
+      ],
     },
     timeline: {
       kicker: "Trajetória",
       title: "Experiência, formação e certificados em uma linha só.",
       description:
-        "Uma leitura horizontal da minha base profissional: ETEC, eletrônica, suporte técnico e certificações Rocketseat."
+        "Uma leitura horizontal da minha base profissional: ETEC, eletrônica, suporte técnico e certificações Rocketseat.",
     },
     work: {
       kicker: "Projetos",
@@ -80,7 +78,7 @@ export const translations = {
           summary:
             "Backend em NestJS para administradores e entregadores, com autenticação, ciclo de entregas, entregas próximas, notificações e foto de comprovação.",
           outcome:
-            "Fluxo operacional com papéis claros, rotas protegidas e estrutura pensada para domínio."
+            "Fluxo operacional com papéis claros, rotas protegidas e estrutura pensada para domínio.",
         },
         {
           title: "Help Desk",
@@ -88,7 +86,7 @@ export const translations = {
           summary:
             "Plataforma full-stack de chamados com Express, autenticação JWT, telas por perfil e interface React/Vite/Tailwind.",
           outcome:
-            "Organização de tickets, status e responsabilidades em uma experiência prática e responsiva."
+            "Organização de tickets, status e responsabilidades em uma experiência prática e responsiva.",
         },
         {
           title: "Archteturis",
@@ -96,21 +94,25 @@ export const translations = {
           summary:
             "Framework TypeScript para bots Discord.js v14 com comandos slash modulares e arquitetura reutilizável.",
           outcome:
-            "Base organizada para evitar boilerplate repetido e acelerar criação de bots."
-        }
-      ]
+            "Base organizada para evitar boilerplate repetido e acelerar criação de bots.",
+        },
+      ],
     },
     stack: {
       kicker: "Stack",
       title: "Stack usada para construir produtos completos.",
       description:
-        "Uma base prática entre frontend, backend, dados, sistemas e ferramentas do dia a dia."
+        "Uma base prática entre frontend, backend, dados, sistemas e ferramentas do dia a dia.",
     },
     contact: {
       kicker: "Contato",
       title: "Vamos construir algo com calma, forma e função.",
       description:
-        "Envie uma mensagem para trabalho, colaboração ou conversa técnica. O formulário está pronto para conectar a um provedor real de email.",
+        "Me envie um email e vamos transformar uma ideia em uma experiencia digital clara, bonita e funcional.",
+      ctaTitle: "Me envie um email",
+      ctaText:
+        "Vamos criar um projeto juntos, com visual forte, interface precisa e tecnologia bem resolvida.",
+      ctaButton: "Enviar email",
       name: "Nome",
       email: "Email",
       message: "Mensagem",
@@ -121,8 +123,8 @@ export const translations = {
       sent: "Mensagem recebida. Respondo em breve.",
       error: "Confira os campos e tente novamente.",
       send: "Enviar",
-      sending: "Enviando"
-    }
+      sending: "Enviando",
+    },
   },
   en: {
     nav: {
@@ -130,24 +132,24 @@ export const translations = {
       about: "About",
       timeline: "Timeline",
       stack: "Stack",
-      contact: "Contact"
+      contact: "Contact",
     },
     actions: {
       label: "Quick actions",
       items: {
         linkedin: {
           title: "Open LinkedIn",
-          description: "Professional profile and career path."
+          description: "Professional profile and career path.",
         },
         projects: {
           title: "Open projects",
-          description: "Main repositories in the portfolio."
+          description: "Main repositories in the portfolio.",
         },
         resume: {
           title: "Download resume",
-          description: "Professional summary in PDF."
-        }
-      }
+          description: "Professional summary in PDF.",
+        },
+      },
     },
     hero: {
       eyebrow: "Arthur Pedroso de Almeida | Sao Paulo, Brazil",
@@ -158,35 +160,33 @@ export const translations = {
       scroll: "Scroll",
       cta: "View work",
       resume: "Resume",
-      github: "GitHub"
+      github: "GitHub",
     },
     about: {
       kicker: "About",
       title: "About me, no pose and no noise.",
-      lead:
-        "I am Arthur Pedroso de Almeida, also known as Ruhtra. My path combines full-stack development, electronics, mechatronics, technical support and technical leadership.",
-      body:
-        "I work with React, Next.js, TypeScript, Node.js, REST APIs, JWT authentication, dashboards and support systems. My profile is direct: technology, operations, product thinking and the will to build responsibly.",
+      lead: "I am Arthur Pedroso de Almeida, also known as Ruhtra. My path combines full-stack development, electronics, mechatronics, technical support and technical leadership.",
+      body: "I work with React, Next.js, TypeScript, Node.js, REST APIs, JWT authentication, dashboards and support systems. My profile is direct: technology, operations, product thinking and the will to build responsibly.",
       blocks: [
         {
           title: "Full-stack",
-          text: "Modern interfaces connected to APIs, authentication, databases and real workflows."
+          text: "Modern interfaces connected to APIs, authentication, databases and real workflows.",
         },
         {
           title: "Technical",
-          text: "Education in electronics and mechatronics, with practical technical support experience."
+          text: "Education in electronics and mechatronics, with practical technical support experience.",
         },
         {
           title: "Product",
-          text: "Entrepreneurial profile, CTO and owner-partner at Aurora Technology Society."
-        }
-      ]
+          text: "Entrepreneurial profile, CTO and owner-partner at Aurora Technology Society.",
+        },
+      ],
     },
     timeline: {
       kicker: "Timeline",
       title: "Experience, education and certificates in one line.",
       description:
-        "A horizontal read of my professional base: ETEC, electronics, technical support and Rocketseat certifications."
+        "A horizontal read of my professional base: ETEC, electronics, technical support and Rocketseat certifications.",
     },
     work: {
       kicker: "Work",
@@ -201,7 +201,7 @@ export const translations = {
           summary:
             "NestJS backend for administrators and delivery workers, with authentication, delivery lifecycle, nearby deliveries, notifications and proof photos.",
           outcome:
-            "Operational flow with clear roles, protected routes and domain-minded structure."
+            "Operational flow with clear roles, protected routes and domain-minded structure.",
         },
         {
           title: "Help Desk",
@@ -209,7 +209,7 @@ export const translations = {
           summary:
             "Full-stack ticket platform with Express, JWT authentication, role-based screens and a React/Vite/Tailwind interface.",
           outcome:
-            "Ticket organization, status tracking and responsibilities in a practical responsive experience."
+            "Ticket organization, status tracking and responsibilities in a practical responsive experience.",
         },
         {
           title: "Archteturis",
@@ -217,21 +217,25 @@ export const translations = {
           summary:
             "TypeScript framework for Discord.js v14 bots with modular slash commands and reusable architecture.",
           outcome:
-            "Organized foundation to avoid repeated boilerplate and speed up bot creation."
-        }
-      ]
+            "Organized foundation to avoid repeated boilerplate and speed up bot creation.",
+        },
+      ],
     },
     stack: {
       kicker: "Stack",
       title: "Stack used to build complete products.",
       description:
-        "A practical base across frontend, backend, data, systems and everyday tools."
+        "A practical base across frontend, backend, data, systems and everyday tools.",
     },
     contact: {
       kicker: "Contact",
       title: "Let's build something with calm, form and function.",
       description:
-        "Send a message for work, collaboration or a technical conversation. The form is ready to connect to a real email provider.",
+        "Send me an email and let's turn an idea into a clear, polished and functional digital experience.",
+      ctaTitle: "Send me an email",
+      ctaText:
+        "Let's create a project together, with strong visuals, precise interface work and solid technology.",
+      ctaButton: "Send email",
       name: "Name",
       email: "Email",
       message: "Message",
@@ -242,9 +246,9 @@ export const translations = {
       sent: "Message received. I will answer soon.",
       error: "Check the fields and try again.",
       send: "Send",
-      sending: "Sending"
-    }
-  }
+      sending: "Sending",
+    },
+  },
 } as const;
 
 export type TranslationTree = (typeof translations)[Locale];

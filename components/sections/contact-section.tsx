@@ -1,8 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import { FormEvent, useRef, useState } from "react";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { useRef } from "react";
 import { usePortfolioI18n } from "@/components/providers/i18n-provider";
 import { ActionButton } from "@/components/ui/action-button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -12,40 +12,7 @@ import { profile, socials } from "@/lib/site-data";
 export function ContactSection() {
   const ref = useRef<HTMLElement>(null);
   const { content, locale } = usePortfolioI18n();
-  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
   useGsapReveal(ref);
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    setStatus("loading");
-
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: formData.get("name"),
-        email: formData.get("email"),
-        message: formData.get("message")
-      })
-    });
-
-    if (response.ok) {
-      setStatus("sent");
-      form.reset();
-      return;
-    }
-
-    setStatus("error");
-  }
-
-  const statusText =
-    status === "sent"
-      ? content.contact.sent
-      : status === "error"
-        ? content.contact.error
-        : `${content.contact.idle}: ${profile.email}`;
 
   return (
     <section id="contact" ref={ref} className="page-offset section-space pb-8">
@@ -85,48 +52,41 @@ export function ContactSection() {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="reveal rounded-[1.7rem] border border-[var(--line)] bg-white/[0.014] p-5 sm:p-7">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="input-shell rounded-2xl p-4">
-                  <span className="text-xs uppercase text-white/34">{content.contact.name}</span>
-                  <input
-                    name="name"
-                    required
-                    className="mt-3 w-full bg-transparent text-white outline-none placeholder:text-white/22"
-                    placeholder={content.contact.namePlaceholder}
-                  />
-                </label>
-                <label className="input-shell rounded-2xl p-4">
-                  <span className="text-xs uppercase text-white/34">{content.contact.email}</span>
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    className="mt-3 w-full bg-transparent text-white outline-none placeholder:text-white/22"
-                    placeholder={content.contact.emailPlaceholder}
-                  />
-                </label>
-              </div>
+            <div className="reveal contact-cta-3d relative isolate overflow-hidden rounded-[1.7rem] p-6 sm:p-8">
+              <div className="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(circle_at_24%_18%,rgba(216,201,165,0.16),transparent_32%),radial-gradient(circle_at_78%_78%,rgba(143,157,168,0.16),transparent_34%)]" />
+              <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/42 to-transparent" />
 
-              <label className="input-shell mt-4 block rounded-2xl p-4">
-                <span className="text-xs uppercase text-white/34">{content.contact.message}</span>
-                <textarea
-                  name="message"
-                  required
-                  rows={7}
-                  className="mt-3 w-full resize-none bg-transparent text-white outline-none placeholder:text-white/22"
-                  placeholder={content.contact.messagePlaceholder}
-                />
-              </label>
+              <div className="relative flex min-h-[24rem] flex-col justify-between">
+                <div className="flex items-center justify-between gap-4">
+                  <span className="grid size-12 place-items-center rounded-full border border-white/14 bg-black/35 text-white/70 shadow-[0_1.5rem_4rem_rgba(0,0,0,0.36)]">
+                    <Mail size={19} />
+                  </span>
+                  <span className="text-right text-xs uppercase tracking-[0.26em] text-white/38">
+                    {content.contact.idle}
+                  </span>
+                </div>
 
-              <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="min-h-6 text-sm text-white/46">{statusText}</p>
-                <ActionButton type="submit" disabled={status === "loading"}>
-                  {status === "loading" ? content.contact.sending : content.contact.send}
-                  <ArrowUpRight size={18} />
-                </ActionButton>
+                <div>
+                  <p className="max-w-[13rem] text-sm uppercase tracking-[0.24em] text-white/36">
+                    {profile.email}
+                  </p>
+                  <h3 className="contact-cta-title mt-7 max-w-2xl text-[clamp(3rem,9vw,6.6rem)] font-black uppercase leading-[0.82] text-white">
+                    {content.contact.ctaTitle}
+                  </h3>
+                  <p className="mt-7 max-w-xl text-base leading-8 text-white/58 md:text-lg">
+                    {content.contact.ctaText}
+                  </p>
+                </div>
+
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <ActionButton href={`mailto:${profile.email}?subject=Vamos criar um projeto juntos`}>
+                    {content.contact.ctaButton}
+                    <ArrowUpRight size={18} />
+                  </ActionButton>
+                  <span className="text-sm text-white/34">{profile.location}</span>
+                </div>
               </div>
-            </form>
+            </div>
           </motion.div>
         </AnimatePresence>
 

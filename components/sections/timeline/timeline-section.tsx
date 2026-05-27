@@ -42,10 +42,12 @@ export function TimelineSection() {
 
       mm.add("(min-width: 768px)", () => {
         gsap.set(cards, {
-          opacity: 0.9,
-          scale: 0.96,
+          opacity: 0.64,
+          rotateX: (_index, target: HTMLElement) =>
+            target.dataset.side === "top" ? 9 : -9,
+          scale: 0.92,
           y: (_index, target: HTMLElement) =>
-            target.dataset.side === "top" ? -176 : 176
+            target.dataset.side === "top" ? -154 : 154
         });
         gsap.set(line, { scaleX: 0.04, transformOrigin: "left center" });
         gsap.set(arrow, { autoAlpha: 0.38, x: -12, scale: 0.88 });
@@ -73,11 +75,12 @@ export function TimelineSection() {
             cards,
             {
               opacity: 1,
+              rotateX: 0,
               scale: 1,
               y: (_index, target: HTMLElement) =>
                 target.dataset.side === "top" ? -190 : 190,
-              stagger: 0.075,
-              ease: "none"
+              stagger: 0.08,
+              ease: "power1.out"
             },
             0.04
           )
@@ -125,7 +128,7 @@ export function TimelineSection() {
 
       <div
         ref={stageRef}
-        className="relative mt-10 min-h-[42rem] overflow-hidden md:min-h-[100svh]"
+        className="relative mt-10 min-h-[42rem] overflow-hidden md:min-h-[100svh] md:[perspective:1200px]"
       >
         <div className="pointer-events-none absolute inset-y-0 left-0 z-20 hidden w-[12vw] bg-gradient-to-r from-[#030303] to-transparent md:block" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-20 hidden w-[12vw] bg-gradient-to-l from-[#030303] to-transparent md:block" />
@@ -181,10 +184,13 @@ function TimelineCard({
       data-timeline-card
       data-side={item.side}
       className={cn(
-        "group relative flex h-[24rem] w-[18.5rem] shrink-0 flex-col justify-between rounded-[1.35rem] border border-white/14 bg-[#070707]/92 p-5 shadow-[0_1.5rem_5rem_rgba(0,0,0,0.32)] backdrop-blur-sm transition duration-300 hover:border-white/48 hover:bg-[#111] hover:shadow-[0_1.75rem_5rem_rgba(255,255,255,0.07)] sm:w-[21rem] md:h-[21.5rem] md:w-[23rem]",
+        "group relative flex h-[24rem] w-[18.5rem] shrink-0 flex-col justify-between overflow-hidden rounded-[1.35rem] border border-white/12 bg-[#070707]/92 p-5 shadow-[0_1.5rem_5rem_rgba(0,0,0,0.32)] backdrop-blur-sm transition duration-500 [transform-style:preserve-3d] hover:-translate-y-2 hover:rotate-[-0.7deg] hover:border-white/38 hover:bg-[#111] hover:shadow-[0_2rem_5rem_rgba(216,201,165,0.09)] sm:w-[21rem] md:h-[21.5rem] md:w-[23rem]",
         isTop ? "md:-translate-y-44" : "md:translate-y-44"
       )}
     >
+      <span className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 [background:linear-gradient(135deg,rgba(255,255,255,0.08),transparent_36%,rgba(216,201,165,0.055))]" />
+      <span className="pointer-events-none absolute -right-12 -top-12 size-32 rounded-full bg-white/[0.035] blur-2xl transition duration-500 group-hover:bg-[var(--warm)]/10" />
+
       <span
         aria-hidden="true"
         className={cn(
