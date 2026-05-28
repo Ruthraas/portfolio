@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { TimelineCard } from "@/components/sections/timeline/timeline-card";
 import { useTimelineScroll } from "@/components/sections/timeline/use-timeline-scroll";
@@ -11,61 +10,102 @@ type TimelineTrackProps = {
   locale: Locale;
 };
 
+const curvePath =
+  "M74 406 C190 142 340 116 474 314 C615 522 760 526 884 276 C1002 40 1118 126 1142 378";
+
 export function TimelineTrack({ locale }: TimelineTrackProps) {
-  const progressRef = useRef<HTMLSpanElement>(null);
-  const { scrollByPage, sectionRef, trackRef } = useTimelineScroll({
-    locale,
-    progressRef
+  const pathRef = useRef<SVGPathElement>(null);
+  const progressPathRef = useRef<SVGPathElement>(null);
+  const markerRef = useRef<SVGCircleElement>(null);
+  const { activeIndex, sectionRef, stageRef, trackRef } = useTimelineScroll({
+    itemCount: timelineItems.length,
+    markerRef,
+    pathRef,
+    progressPathRef
   });
+  const activeItem = timelineItems[activeIndex] ?? timelineItems[0];
+  const activeCopy = activeItem.content[locale];
 
   return (
     <div
       ref={sectionRef}
-      className="relative mt-12 md:min-h-[calc(100svh+var(--timeline-scroll-distance,0px))]"
+      className="timeline-curve relative mt-14 md:min-h-[calc(100svh+var(--timeline-scroll-distance,0px))]"
     >
-      <div className="md:sticky md:top-[8svh] md:flex md:min-h-[84svh] md:flex-col md:justify-center md:py-10">
-        <div className="mb-5 flex justify-end gap-2">
-          <button
-            type="button"
-            aria-label="Voltar na linha do tempo"
-            onClick={() => scrollByPage("previous")}
-            className="grid size-10 place-items-center rounded-full border border-white/10 bg-white/[0.025] text-white/52 transition hover:border-white/24 hover:text-white"
-          >
-            <ArrowLeft size={16} />
-          </button>
-          <button
-            type="button"
-            aria-label="Avancar na linha do tempo"
-            onClick={() => scrollByPage("next")}
-            className="grid size-10 place-items-center rounded-full border border-white/10 bg-white/[0.025] text-white/52 transition hover:border-white/24 hover:text-white"
-          >
-            <ArrowRight size={16} />
-          </button>
-        </div>
+      <div
+        ref={stageRef}
+        className="timeline-curve-stage relative h-[100svh] overflow-hidden"
+      >
+        <div className="content-shell relative h-full py-20 md:py-24">
+          <div className="timeline-curve-meta relative z-30 max-w-[22rem] pt-4">
+            <span className="text-[0.66rem] uppercase tracking-[0.28em] text-white/38">
+              {String(activeIndex + 1).padStart(2, "0")} / {timelineItems.length}
+            </span>
+            <h3 className="mt-4 text-3xl font-semibold tracking-[-0.045em] text-white md:text-5xl">
+              {activeCopy.title}
+            </h3>
+            <p className="mt-3 text-sm uppercase tracking-[0.18em] text-white/36">
+              {activeItem.date}
+            </p>
+            <p className="mt-5 text-sm leading-7 text-white/58">{activeCopy.place}</p>
+          </div>
 
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-8 bg-gradient-to-r from-[#030303] to-transparent sm:w-16" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-8 bg-gradient-to-l from-[#030303] to-transparent sm:w-16" />
-        <div className="pointer-events-none absolute left-0 right-0 top-[calc(50%+1.25rem)] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-        <div className="mb-4 h-px overflow-hidden rounded-full bg-white/[0.06]">
-          <span
-            ref={progressRef}
-            className="block h-full origin-left scale-x-0 bg-gradient-to-r from-[var(--warm)] via-[var(--mist)] to-white/80"
-          />
-        </div>
-
-        <div
-          ref={trackRef}
-          className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-6 pt-2 [perspective:1200px] md:w-max md:snap-none md:overflow-visible"
-        >
-          {timelineItems.map((item, index) => (
-            <TimelineCard
-              key={`${item.content.pt.title}-${item.date}-${index}`}
-              index={index}
-              item={item}
-              locale={locale}
-              position={index % 2 === 0 ? "top" : "bottom"}
+          <svg
+            aria-hidden="true"
+            className="timeline-curve-svg pointer-events-none absolute inset-y-[11%] right-[-10%] z-0 h-[74%] w-[88%] overflow-visible md:right-[-4%] md:w-[76%]"
+            viewBox="0 0 1200 620"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <defs>
+              <linearGradient id="timeline-curve-gradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="rgba(216,201,165,0.26)" />
+                <stop offset="48%" stopColor="rgba(143,157,168,0.34)" />
+                <stop offset="100%" stopColor="rgba(241,239,233,0.58)" />
+              </linearGradient>
+            </defs>
+            <path
+              d={curvePath}
+              fill="none"
+              stroke="rgba(241,239,233,0.13)"
+              strokeLinecap="round"
+              strokeWidth="2"
             />
-          ))}
+            <path
+              ref={pathRef}
+              d={curvePath}
+              fill="none"
+              stroke="transparent"
+              strokeLinecap="round"
+              strokeWidth="2"
+            />
+            <path
+              ref={progressPathRef}
+              d={curvePath}
+              fill="none"
+              stroke="url(#timeline-curve-gradient)"
+              strokeLinecap="round"
+              strokeWidth="4"
+            />
+            <circle
+              ref={markerRef}
+              cx="74"
+              cy="406"
+              r="10"
+              fill="#f1efe9"
+              stroke="rgba(3,3,3,0.78)"
+              strokeWidth="6"
+            />
+          </svg>
+
+          <div ref={trackRef} className="timeline-curve-track relative z-20">
+            {timelineItems.map((item, index) => (
+              <TimelineCard
+                key={`${item.content.pt.title}-${item.date}-${index}`}
+                index={index}
+                item={item}
+                locale={locale}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

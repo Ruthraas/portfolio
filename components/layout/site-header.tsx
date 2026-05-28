@@ -47,12 +47,12 @@ export function SiteHeader() {
 
   return (
     <motion.header
-      initial={{ y: -18, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      initial={{ y: -18 }}
+      animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
       className="fixed left-4 right-4 top-4 z-[60] lg:left-8 lg:right-8"
     >
-      <div className="mx-auto flex min-h-14 max-w-[76rem] items-center justify-between gap-4 rounded-full border border-white/10 bg-black/54 px-4 shadow-[0_1rem_4rem_rgba(0,0,0,0.24)] backdrop-blur-xl sm:px-5">
+      <div className="mx-auto flex min-h-14 max-w-[76rem] items-center justify-between gap-4 rounded-full border border-white/10 bg-black/82 px-4 shadow-[0_1rem_4rem_rgba(0,0,0,0.24)] sm:px-5">
         <a href="#top" className="shrink-0">
           <span className="block max-w-[12.5rem] truncate text-[0.7rem] uppercase tracking-[0.22em] text-white/36 sm:max-w-none">
             {profile.displayName}
@@ -93,7 +93,7 @@ export function SiteHeader() {
 
       <nav
         aria-label="Navegação mobile"
-        className="no-scrollbar mx-auto mt-2 flex max-w-[calc(100vw-2rem)] gap-2 overflow-x-auto rounded-full border border-white/10 bg-black/48 p-1 backdrop-blur-xl md:hidden"
+        className="no-scrollbar mx-auto mt-2 flex max-w-[calc(100vw-2rem)] gap-2 overflow-x-auto rounded-full border border-white/10 bg-black/82 p-1 md:hidden"
       >
         {navSections.map((item) => {
           const isActive = active === item.id;

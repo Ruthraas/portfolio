@@ -32,8 +32,8 @@ export function ActionRail() {
 
   return (
     <motion.aside
-      initial={{ x: -18, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
+      initial={{ x: -18 }}
+      animate={{ x: 0 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
       aria-label={content.actions.label}
       className="fixed left-4 top-1/2 z-[65] hidden -translate-y-1/2 flex-col gap-3 md:flex xl:left-8"

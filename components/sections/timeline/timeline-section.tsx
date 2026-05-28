@@ -13,16 +13,16 @@ export function TimelineSection() {
   useGsapReveal(ref);
 
   return (
-    <section id="timeline" ref={ref} className="page-offset section-space overflow-hidden">
-      <div className="content-shell">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={locale}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          >
+    <section id="timeline" ref={ref} className="page-offset section-space">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={locale}
+          initial={{ y: 14 }}
+          animate={{ y: 0 }}
+          exit={{ y: -8 }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="content-shell">
             <div className="reveal">
               <SectionHeading
                 kicker={content.timeline.kicker}
@@ -30,13 +30,13 @@ export function TimelineSection() {
                 description={content.timeline.description}
               />
             </div>
+          </div>
 
-            <div className="reveal">
-              <TimelineTrack locale={locale} />
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
+          <div>
+            <TimelineTrack locale={locale} />
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </section>
   );
 }

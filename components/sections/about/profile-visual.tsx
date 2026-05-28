@@ -6,8 +6,8 @@ import Image from "next/image";
 export function ProfileVisual() {
   return (
     <motion.figure
-      initial={{ opacity: 0, y: 28, rotate: -1 }}
-      whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+      initial={{ clipPath: "inset(0% 0% 100% 0%)", y: 28, rotate: -1 }}
+      whileInView={{ clipPath: "inset(0% 0% 0% 0%)", y: 0, rotate: 0 }}
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       className="relative mx-auto aspect-[4/5] w-full max-w-[24rem] lg:mr-0"

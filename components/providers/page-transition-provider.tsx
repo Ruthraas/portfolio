@@ -26,9 +26,8 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
 
       gsap.fromTo(
         "[data-page-root]",
-        { autoAlpha: 0, y: 12 },
+        { y: 16 },
         {
-          autoAlpha: 1,
           y: 0,
           duration: 1.05,
           ease: "power4.out",

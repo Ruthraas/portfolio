@@ -147,6 +147,37 @@ textarea {
       0 0.12em 0 rgba(216, 201, 165, 0.16),
       0 0.34em 1.2em rgba(0, 0, 0, 0.56);
   }
+
+  .timeline-curve-track {
+    min-height: 72svh;
+    perspective: 1400px;
+  }
+
+  .timeline-curve-card {
+    position: absolute;
+    left: 50%;
+    top: 53%;
+    z-index: var(--card-z, 1);
+    width: min(27rem, calc(100vw - 2rem));
+    opacity: var(--card-opacity, 1);
+    transform:
+      translate3d(calc(-50% + var(--card-x, 0px)), calc(-50% + var(--card-y, 0px)), 0)
+      rotate(var(--card-rotate, 0deg))
+      scale(var(--card-scale, 1));
+    transform-origin: 50% 50%;
+    will-change: transform, opacity;
+  }
+
+  .timeline-curve-card[data-active="true"] .timeline-card-surface {
+    border-color: rgba(241, 239, 233, 0.28);
+    box-shadow:
+      0 2rem 5rem rgba(0, 0, 0, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .timeline-card-surface {
+    transform-style: preserve-3d;
+  }
 }
 
 @layer utilities {
@@ -191,5 +222,41 @@ textarea {
 
   .contact-cta-3d {
     transform: none;
+  }
+
+  .timeline-curve-stage {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .timeline-curve-svg {
+    display: none;
+  }
+
+  .timeline-curve-meta {
+    position: sticky;
+    top: 8.5rem;
+    max-width: none;
+    padding-bottom: 1.25rem;
+    background: linear-gradient(180deg, var(--bg) 72%, rgba(3, 3, 3, 0));
+  }
+
+  .timeline-curve-track {
+    display: grid;
+    gap: 1rem;
+    min-height: auto;
+    padding-bottom: 1rem;
+  }
+
+  .timeline-curve-card {
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: auto;
+    width: 100%;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
   }
 }

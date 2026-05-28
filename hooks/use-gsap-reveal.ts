@@ -29,17 +29,13 @@ export function useGsapReveal<T extends HTMLElement>(
           gsap.fromTo(
             target,
             {
-              autoAlpha: 0,
-              filter: "blur(12px)",
-              rotateX: 7,
-              scale: 0.975,
-              y: 28
+              clipPath: "inset(0% 0% 100% 0%)",
+              rotateX: 5,
+              y: 34
             },
             {
-              autoAlpha: 1,
-              filter: "blur(0px)",
+              clipPath: "inset(0% 0% 0% 0%)",
               rotateX: 0,
-              scale: 1,
               y: 0,
               duration: 0.95,
               delay: index * 0.035,
@@ -63,17 +59,13 @@ export function useGsapReveal<T extends HTMLElement>(
             gsap.fromTo(
               target,
               {
-                autoAlpha: 0,
-                filter: "blur(10px)",
-                rotateX: 6,
-                scale: 0.98,
-                y: 22
+                clipPath: "inset(0% 0% 100% 0%)",
+                rotateX: 5,
+                y: 26
               },
               {
-                autoAlpha: 1,
-                filter: "blur(0px)",
+                clipPath: "inset(0% 0% 0% 0%)",
                 rotateX: 0,
-                scale: 1,
                 y: 0,
                 duration: 0.8,
                 delay: index * 0.025,

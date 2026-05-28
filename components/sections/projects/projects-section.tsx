@@ -19,9 +19,9 @@ export function ProjectsSection() {
         <AnimatePresence mode="wait">
           <motion.div
             key={locale}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
+            initial={{ y: 14 }}
+            animate={{ y: 0 }}
+            exit={{ y: -8 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="reveal mb-10">
@@ -32,7 +32,7 @@ export function ProjectsSection() {
               />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
               {projectMeta.map((meta, index) => (
                 <ProjectCard
                   key={meta.repo}

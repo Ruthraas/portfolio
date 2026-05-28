@@ -7,106 +7,162 @@ export const translations = {
     nav: {
       work: "Projetos",
       about: "Sobre",
-      timeline: "Trajetória",
+      timeline: "Trajetoria",
       stack: "Stack",
       contact: "Contato",
     },
     actions: {
-      label: "Ações rápidas",
+      label: "Acoes rapidas",
       items: {
         linkedin: {
           title: "Acessar LinkedIn",
-          description: "Perfil profissional e trajetória.",
+          description: "Perfil profissional e trajetoria.",
         },
         projects: {
           title: "Acessar projetos",
-          description: "Repositórios principais no portfolio.",
+          description: "Repositorios principais no portfolio.",
         },
         resume: {
-          title: "Baixar currículo",
+          title: "Baixar curriculo",
           description: "Resumo profissional em PDF.",
         },
       },
     },
     hero: {
-      eyebrow: "Arthur Pedroso de Almeida | São Paulo, Brasil",
+      eyebrow: "Arthur Pedroso de Almeida | Sao Paulo, Brasil",
       name: "RUHTRA",
       role: "Creative Developer",
-      line: "Desenvolvedor full-stack, técnico em eletrônica e mecatrônica, criando produtos digitais com precisão visual e base técnica.",
-      location: "São Paulo, Brasil",
+      line: "Desenvolvedor full-stack, tecnico em eletronica e mecatronica, criando produtos digitais com precisao visual e base tecnica.",
+      location: "Sao Paulo, Brasil",
       scroll: "Scroll",
       cta: "Ver projetos",
-      resume: "Currículo",
+      resume: "Curriculo",
       github: "GitHub",
     },
     about: {
       kicker: "Sobre",
-      title: "Sobre mim, sem pose e sem ruído.",
-      lead: "Sou Arthur Pedroso de Almeida, também conhecido como Ruhtra. Minha trajetória mistura desenvolvimento full-stack, eletrônica, mecatrônica, suporte técnico e liderança técnica.",
-      body: "Atuo com React, Next.js, TypeScript, Node.js, APIs REST, autenticação JWT, dashboards e sistemas de suporte. No LinkedIn, minha base aparece bem direta: tecnologia, operação, produto e vontade de construir com responsabilidade.",
+      title: "Sobre mim, sem pose e sem ruido.",
+      lead: "Sou Arthur Pedroso de Almeida, tambem conhecido como Ruhtra. Minha trajetoria mistura desenvolvimento full-stack, eletronica, mecatronica, suporte tecnico e lideranca tecnica.",
+      body: "Atuo com React, Next.js, TypeScript, Node.js, APIs REST, autenticacao JWT, dashboards e sistemas de suporte. A base e direta: tecnologia, operacao, produto e vontade de construir com responsabilidade.",
       blocks: [
         {
           title: "Full-stack",
-          text: "Interfaces modernas conectadas a APIs, autenticação, bancos de dados e fluxos reais.",
+          text: "Interfaces modernas conectadas a APIs, autenticacao, bancos de dados e fluxos reais.",
         },
         {
-          title: "Técnico",
-          text: "Formação em eletrônica e mecatrônica, com experiência prática em suporte técnico.",
+          title: "Tecnico",
+          text: "Formacao em eletronica e mecatronica, com experiencia pratica em suporte tecnico.",
         },
         {
           title: "Produto",
-          text: "Perfil empreendedor, CTO e sócio proprietário da Aurora Technology Society.",
+          text: "Perfil empreendedor, CTO e socio proprietario da Aurora Technology Society.",
         },
       ],
     },
     timeline: {
-      kicker: "Trajetória",
-      title: "Experiência, formação e certificados em uma linha só.",
+      kicker: "Trajetoria",
+      title: "Uma linha curva para seguir a historia pelo scroll.",
       description:
-        "Uma leitura horizontal da minha base profissional: ETEC, eletrônica, suporte técnico e certificações Rocketseat.",
+        "Experiencia, formacao e certificados agora entram em uma narrativa guiada: a linha progride, o card ativo muda no scroll e nada depende de fade com blur.",
     },
     work: {
       kicker: "Projetos",
-      title: "Projetos principais, lado a lado e direto ao ponto.",
+      title: "Mais repositorios, menos card gigante sem necessidade.",
       description:
-        "Cards menores no estilo repositório: nome, descrição, stack e acesso rápido ao GitHub.",
-      open: "Abrir repositório",
+        "Cards compactos no estilo GitHub: nome, contexto, stack e acesso rapido ao repositorio.",
+      open: "Abrir repositorio",
       projects: [
         {
-          title: "FastFeet API",
-          type: "API de logística",
+          title: "Portfolio",
+          type: "Portfolio interativo",
           summary:
-            "Backend em NestJS para administradores e entregadores, com autenticação, ciclo de entregas, entregas próximas, notificações e foto de comprovação.",
+            "Next.js com Lenis, GSAP, Spline e Tailwind para uma experiencia de scroll mais autoral.",
           outcome:
-            "Fluxo operacional com papéis claros, rotas protegidas e estrutura pensada para domínio.",
+            "A propria vitrine do perfil, com foco em movimento, narrativa e projetos reais.",
+        },
+        {
+          title: "Pizza Shop API",
+          type: "API operacional",
+          summary:
+            "Backend moderno para pedidos, metricas e fluxo de restaurante usando stack TypeScript.",
+          outcome:
+            "Projeto bom para demonstrar API, dados, autenticacao e organizacao de dominio.",
+        },
+        {
+          title: "FastFeet API",
+          type: "API de logistica",
+          summary:
+            "Backend em NestJS para administradores e entregadores, com autenticacao, entregas proximas, notificacoes e comprovante por foto.",
+          outcome:
+            "Fluxo operacional com papeis claros, rotas protegidas e estrutura pensada para dominio.",
+        },
+        {
+          title: "Clean Auth API",
+          type: "API com arquitetura limpa",
+          summary:
+            "Autenticacao em NestJS com separacao de camadas, regras de negocio e base para testes.",
+          outcome:
+            "Mostra maturidade em organizacao de backend, nao so endpoint funcionando.",
+        },
+        {
+          title: "DDD Domain Driven Design",
+          type: "Repositorio didatico",
+          summary:
+            "Exemplo em TypeScript para entidades, casos de uso e regras de dominio isoladas.",
+          outcome:
+            "Material direto para explicar como codigo de dominio fica longe de framework.",
+        },
+        {
+          title: "Find A Friend API",
+          type: "API REST",
+          summary:
+            "Sistema de adocao com busca por proximidade, regras de organizacao e estrutura SOLID.",
+          outcome:
+            "Boa prova de modelagem, filtros e regras de negocio em API real.",
         },
         {
           title: "Help Desk",
-          type: "Sistema de suporte",
+          type: "Sistema full-stack",
           summary:
-            "Plataforma full-stack de chamados com Express, autenticação JWT, telas por perfil e interface React/Vite/Tailwind.",
+            "Plataforma de chamados com Express, JWT, telas por perfil e interface React/Vite/Tailwind.",
           outcome:
-            "Organização de tickets, status e responsabilidades em uma experiência prática e responsiva.",
+            "Organiza tickets, status e responsabilidades em uma experiencia pratica.",
+        },
+        {
+          title: "API SOLID Node.js",
+          type: "API com testes",
+          summary:
+            "API Node.js com Fastify, Prisma, autenticacao e testes, seguindo boas praticas de arquitetura.",
+          outcome:
+            "Mostra criterio tecnico em contrato HTTP, persistencia e validacao.",
+        },
+        {
+          title: "Daily Diet API",
+          type: "API de habitos",
+          summary:
+            "Backend para registro de refeicoes, metricas e controle de dieta com Node.js.",
+          outcome:
+            "Projeto enxuto, bom para demonstrar regras simples bem implementadas.",
         },
         {
           title: "Archteturis",
           type: "Framework para bots",
           summary:
-            "Framework TypeScript para bots Discord.js v14 com comandos slash modulares e arquitetura reutilizável.",
+            "Framework TypeScript para bots Discord.js v14 com comandos slash modulares e arquitetura reutilizavel.",
           outcome:
-            "Base organizada para evitar boilerplate repetido e acelerar criação de bots.",
+            "Base organizada para evitar boilerplate repetido e acelerar criacao de bots.",
         },
       ],
     },
     stack: {
       kicker: "Stack",
-      title: "Stack usada para construir produtos completos.",
+      title: "Stack apresentada como processo, nao como vitrine de tags.",
       description:
-        "Uma base prática entre frontend, backend, dados, sistemas e ferramentas do dia a dia.",
+        "As tecnologias estao separadas por camada: interface, API, dados, arquitetura, automacao e base tecnica.",
     },
     contact: {
       kicker: "Contato",
-      title: "Vamos construir algo com calma, forma e função.",
+      title: "Vamos construir algo com calma, forma e funcao.",
       description:
         "Me envie um email e vamos transformar uma ideia em uma experiencia digital clara, bonita e funcional.",
       ctaTitle: "Me envie um email",
@@ -166,7 +222,7 @@ export const translations = {
       kicker: "About",
       title: "About me, no pose and no noise.",
       lead: "I am Arthur Pedroso de Almeida, also known as Ruhtra. My path combines full-stack development, electronics, mechatronics, technical support and technical leadership.",
-      body: "I work with React, Next.js, TypeScript, Node.js, REST APIs, JWT authentication, dashboards and support systems. My profile is direct: technology, operations, product thinking and the will to build responsibly.",
+      body: "I work with React, Next.js, TypeScript, Node.js, REST APIs, JWT authentication, dashboards and support systems. The base is direct: technology, operations, product thinking and the will to build responsibly.",
       blocks: [
         {
           title: "Full-stack",
@@ -184,32 +240,88 @@ export const translations = {
     },
     timeline: {
       kicker: "Timeline",
-      title: "Experience, education and certificates in one line.",
+      title: "A curved line that follows the story through scroll.",
       description:
-        "A horizontal read of my professional base: ETEC, electronics, technical support and Rocketseat certifications.",
+        "Experience, education and certificates now run as a guided narrative: the line progresses, the active card changes with scroll and nothing depends on blur fades.",
     },
     work: {
       kicker: "Work",
-      title: "Main projects, side by side and straight to the point.",
+      title: "More repositories, fewer oversized cards.",
       description:
-        "Smaller repository-style cards: name, description, stack and quick access to GitHub.",
+        "Compact GitHub-style cards: name, context, stack and quick access to the repository.",
       open: "Open repository",
       projects: [
+        {
+          title: "Portfolio",
+          type: "Interactive portfolio",
+          summary:
+            "Next.js with Lenis, GSAP, Spline and Tailwind for a more authored scroll experience.",
+          outcome:
+            "The profile showcase itself, focused on motion, narrative and real projects.",
+        },
+        {
+          title: "Pizza Shop API",
+          type: "Operational API",
+          summary:
+            "Modern backend for orders, metrics and restaurant workflows using a TypeScript stack.",
+          outcome:
+            "Useful to show API work, data, authentication and domain organization.",
+        },
         {
           title: "FastFeet API",
           type: "Logistics API",
           summary:
-            "NestJS backend for administrators and delivery workers, with authentication, delivery lifecycle, nearby deliveries, notifications and proof photos.",
+            "NestJS backend for administrators and delivery workers, with authentication, nearby deliveries, notifications and proof photos.",
           outcome:
             "Operational flow with clear roles, protected routes and domain-minded structure.",
         },
         {
-          title: "Help Desk",
-          type: "Support system",
+          title: "Clean Auth API",
+          type: "Clean architecture API",
           summary:
-            "Full-stack ticket platform with Express, JWT authentication, role-based screens and a React/Vite/Tailwind interface.",
+            "NestJS authentication with separated layers, business rules and a testing-friendly base.",
           outcome:
-            "Ticket organization, status tracking and responsibilities in a practical responsive experience.",
+            "Shows backend organization maturity, not just working endpoints.",
+        },
+        {
+          title: "DDD Domain Driven Design",
+          type: "Teaching repository",
+          summary:
+            "TypeScript example for entities, use cases and isolated domain rules.",
+          outcome:
+            "Clear material to explain how domain code stays away from framework concerns.",
+        },
+        {
+          title: "Find A Friend API",
+          type: "REST API",
+          summary:
+            "Adoption system with nearby search, organization rules and SOLID structure.",
+          outcome:
+            "Strong proof of modeling, filters and business rules in a real API.",
+        },
+        {
+          title: "Help Desk",
+          type: "Full-stack system",
+          summary:
+            "Ticket platform with Express, JWT, role-based screens and a React/Vite/Tailwind interface.",
+          outcome:
+            "Organizes tickets, status and responsibilities in a practical experience.",
+        },
+        {
+          title: "API SOLID Node.js",
+          type: "API with tests",
+          summary:
+            "Node.js API with Fastify, Prisma, authentication and tests following architecture practices.",
+          outcome:
+            "Shows technical judgment in HTTP contracts, persistence and validation.",
+        },
+        {
+          title: "Daily Diet API",
+          type: "Habit API",
+          summary:
+            "Backend for meal records, metrics and diet tracking with Node.js.",
+          outcome:
+            "Lean project that shows simple rules implemented cleanly.",
         },
         {
           title: "Archteturis",
@@ -223,9 +335,9 @@ export const translations = {
     },
     stack: {
       kicker: "Stack",
-      title: "Stack used to build complete products.",
+      title: "Stack presented as process, not as a tag wall.",
       description:
-        "A practical base across frontend, backend, data, systems and everyday tools.",
+        "Technologies are grouped by layer: interface, API, data, architecture, automation and technical base.",
     },
     contact: {
       kicker: "Contact",

@@ -47,7 +47,7 @@ export function ScrollProgress() {
     <div className="pointer-events-none fixed left-0 top-0 z-[70] h-3 w-full overflow-hidden">
       <span
         ref={glowRef}
-        className="absolute left-0 top-0 h-3 w-full origin-left scale-x-0 bg-[linear-gradient(90deg,rgba(216,201,165,0.18),rgba(143,157,168,0.16),rgba(241,239,233,0.2))] blur-md"
+        className="absolute left-0 top-0 h-3 w-full origin-left scale-x-0 bg-[linear-gradient(90deg,rgba(216,201,165,0.12),rgba(143,157,168,0.11),rgba(241,239,233,0.14))]"
       />
       <span
         className="absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-[linear-gradient(90deg,var(--warm),var(--mist),var(--fg))]"

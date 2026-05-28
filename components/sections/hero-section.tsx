@@ -26,8 +26,8 @@ export function HeroSection() {
       <motion.div
         data-scroll-parallax="18"
         aria-hidden="true"
-        initial={{ opacity: 0, y: 22, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
+        initial={{ y: 22, scale: 0.98 }}
+        animate={{ y: 0, scale: 1 }}
         transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
         className="pointer-events-none absolute inset-0 z-[6] flex items-center justify-center px-4"
       >
@@ -52,9 +52,9 @@ export function HeroSection() {
             <motion.div
               data-scroll-velocity
               key={locale}
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              initial={{ y: 18 }}
+              animate={{ y: 0 }}
+              exit={{ y: -10 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               className="ml-auto max-w-[30rem] text-left md:text-right"
             >

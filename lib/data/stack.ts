@@ -2,39 +2,51 @@ import { Cpu, Database, Monitor, Server, Settings, SquareTerminal } from "lucide
 
 export const stackGroups = [
   {
-    key: "frontend",
-    label: "Frontend",
+    key: "interface",
+    layer: "01",
+    label: "Interface",
     icon: Monitor,
+    signal: "Onde o produto vira experiencia.",
     items: ["React", "Next.js", "TypeScript", "Tailwind CSS"]
   },
   {
-    key: "backend",
-    label: "Backend",
+    key: "api",
+    layer: "02",
+    label: "API",
     icon: Server,
-    items: ["Node.js", "NestJS", "Express", "REST APIs"]
+    signal: "Contratos, rotas, autenticacao e regras.",
+    items: ["Node.js", "NestJS", "Fastify", "Elysia"]
   },
   {
     key: "data",
+    layer: "03",
     label: "Dados",
     icon: Database,
-    items: ["Prisma", "PostgreSQL", "SQLite", "Knex.js"]
+    signal: "Persistencia, consultas e integridade.",
+    items: ["Prisma", "Drizzle", "PostgreSQL", "SQLite"]
+  },
+  {
+    key: "architecture",
+    layer: "04",
+    label: "Arquitetura",
+    icon: SquareTerminal,
+    signal: "Codigo separado por dominio, nao por improviso.",
+    items: ["DDD", "SOLID", "Use Cases", "Tests"]
+  },
+  {
+    key: "automation",
+    layer: "05",
+    label: "Automacao",
+    icon: Settings,
+    signal: "Ferramentas que deixam o fluxo rapido.",
+    items: ["Bun", "Vite", "Docker", "GitHub"]
   },
   {
     key: "systems",
+    layer: "06",
     label: "Sistemas",
     icon: Cpu,
-    items: ["Eletrônica", "Mecatrônica", "Linux", "Git"]
-  },
-  {
-    key: "tools",
-    label: "Ferramentas",
-    icon: Settings,
-    items: ["Figma", "Postman", "Discord.js", "Vite"]
-  },
-  {
-    key: "language",
-    label: "Base",
-    icon: SquareTerminal,
-    items: ["JavaScript", "TypeScript", "HTML", "CSS"]
+    signal: "Base tecnica alem da tela.",
+    items: ["Eletronica", "Mecatronica", "Linux", "Suporte"]
   }
 ];

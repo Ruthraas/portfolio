@@ -42,17 +42,13 @@ export function ScrollEffects() {
         gsap.fromTo(
           element,
           {
-            autoAlpha: 0,
-            filter: "blur(14px)",
+            clipPath: "inset(0% 0% 100% 0%)",
             rotateX: 8,
-            scale: 0.96,
-            y: 34
+            y: 42
           },
           {
-            autoAlpha: 1,
-            filter: "blur(0px)",
+            clipPath: "inset(0% 0% 0% 0%)",
             rotateX: 0,
-            scale: 1,
             y: 0,
             ease: "power3.out",
             scrollTrigger: {

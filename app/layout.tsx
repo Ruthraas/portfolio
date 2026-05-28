@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { AppProviders } from "@/components/providers/app-providers";
+import { ActionRail } from "@/components/layout/action-rail";
 import { GrainOverlay } from "@/components/layout/grain-overlay";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { SiteHeader } from "@/components/layout/site-header";
-import { ActionRail } from "@/components/layout/action-rail";
+import { AppProviders } from "@/components/providers/app-providers";
 
 export const metadata: Metadata = {
   title: "Arthur Pedroso de Almeida | Ruhtra - Creative Developer",
   description:
-    "Portfolio de Arthur Pedroso de Almeida, Ruhtra: desenvolvedor full-stack, técnico em eletrônica, técnico em mecatrônica e CTO focado em React, Node.js, APIs e produtos digitais.",
+    "Portfolio de Arthur Pedroso de Almeida, Ruhtra: desenvolvedor full-stack, tecnico em eletronica, tecnico em mecatronica e CTO focado em React, Node.js, APIs e produtos digitais.",
   authors: [{ name: "Arthur Pedroso de Almeida" }],
   metadataBase: new URL("https://github.com/Ruthraas"),
   openGraph: {

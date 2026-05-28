@@ -1,13 +1,75 @@
 export const projectMeta = [
   {
+    repo: "https://github.com/Ruthraas/portfolio",
+    owner: "Ruthraas",
+    name: "portfolio",
+    language: "TypeScript",
+    languageColor: "#3178c6",
+    year: "2026",
+    index: "01",
+    stars: 0,
+    forks: 0,
+    stack: ["Next.js", "Lenis", "GSAP", "TypeScript", "Tailwind CSS"]
+  },
+  {
+    repo: "https://github.com/Ruthraas/api-pizzashop",
+    owner: "Ruthraas",
+    name: "api-pizzashop",
+    language: "TypeScript",
+    languageColor: "#3178c6",
+    year: "2026",
+    index: "02",
+    stars: 0,
+    forks: 0,
+    stack: ["Bun", "Elysia", "Drizzle", "PostgreSQL", "TypeScript"]
+  },
+  {
     repo: "https://github.com/Ruthraas/Nestjs-api-fastfeet",
     owner: "Ruthraas",
     name: "Nestjs-api-fastfeet",
     language: "TypeScript",
     languageColor: "#3178c6",
     year: "2026",
-    index: "01",
+    index: "03",
+    stars: 0,
+    forks: 0,
     stack: ["NestJS", "TypeScript", "Prisma", "JWT", "REST API"]
+  },
+  {
+    repo: "https://github.com/Ruthraas/Nest-Clean-Auth-API",
+    owner: "Ruthraas",
+    name: "Nest-Clean-Auth-API",
+    language: "TypeScript",
+    languageColor: "#3178c6",
+    year: "2026",
+    index: "04",
+    stars: 0,
+    forks: 0,
+    stack: ["NestJS", "DDD", "Prisma", "JWT", "Docker"]
+  },
+  {
+    repo: "https://github.com/Ruthraas/DDD-Domain-Driven-Design",
+    owner: "Ruthraas",
+    name: "DDD-Domain-Driven-Design",
+    language: "TypeScript",
+    languageColor: "#3178c6",
+    year: "2026",
+    index: "05",
+    stars: 0,
+    forks: 0,
+    stack: ["TypeScript", "DDD", "Entities", "Use Cases", "Node.js"]
+  },
+  {
+    repo: "https://github.com/Ruthraas/api-find-a-friend",
+    owner: "Ruthraas",
+    name: "api-find-a-friend",
+    language: "TypeScript",
+    languageColor: "#3178c6",
+    year: "2026",
+    index: "06",
+    stars: 0,
+    forks: 0,
+    stack: ["Fastify", "Prisma", "PostgreSQL", "Vitest", "SOLID"]
   },
   {
     repo: "https://github.com/Ruthraas/Help_Desk",
@@ -16,8 +78,34 @@ export const projectMeta = [
     language: "TypeScript",
     languageColor: "#3178c6",
     year: "2026",
-    index: "02",
-    stack: ["React", "Vite", "TailwindCSS", "Node.js", "Express"]
+    index: "07",
+    stars: 0,
+    forks: 0,
+    stack: ["React", "Vite", "Tailwind CSS", "Node.js", "Express"]
+  },
+  {
+    repo: "https://github.com/Ruthraas/api-solid-nodejs",
+    owner: "Ruthraas",
+    name: "api-solid-nodejs",
+    language: "TypeScript",
+    languageColor: "#3178c6",
+    year: "2026",
+    index: "08",
+    stars: 0,
+    forks: 0,
+    stack: ["Fastify", "Prisma", "JWT", "Vitest", "SOLID"]
+  },
+  {
+    repo: "https://github.com/Ruthraas/daily-diet-api",
+    owner: "Ruthraas",
+    name: "daily-diet-api",
+    language: "TypeScript",
+    languageColor: "#3178c6",
+    year: "2026",
+    index: "09",
+    stars: 0,
+    forks: 0,
+    stack: ["Node.js", "Fastify", "Knex", "SQLite", "Vitest"]
   },
   {
     repo: "https://github.com/Ruthraas/Archteturis",
@@ -26,7 +114,9 @@ export const projectMeta = [
     language: "TypeScript",
     languageColor: "#3178c6",
     year: "2026",
-    index: "03",
-    stack: ["TypeScript", "Discord.js", "Node.js", "TSX", "DX"]
+    index: "10",
+    stars: 2,
+    forks: 0,
+    stack: ["TypeScript", "Discord.js", "Node.js", "Slash Commands", "DX"]
   }
 ];
